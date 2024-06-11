@@ -16,10 +16,13 @@
   <h3> Enemies</h3>
 <a href="https://mistium.com/">Mistium (nerd) (deleted all my program files)</a>
   <h3> Partners</h3>
-  <button class="clicky"></button>
+  <button class="clicky">0</button>
 
   <script>
-    
+    let clicky = document.getElementsByClassName("clicky")
+    let count = clicky.innerHTML
+    count ++;
+    clicky.innerHTML = count;
   </script>
   
 </html>
