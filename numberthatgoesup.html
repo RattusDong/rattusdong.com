@@ -19,7 +19,7 @@
         const webhook = "https://discord.com/api/webhooks/1250798718572036116/KnFA0o0L7mMUiiznSbpBV7FPz3f0l9kVq4ItxAN3PhLeN1gVsTnxY_e1wJ6z8_AFySm4";
   
         async function fetchCount() {
-          const response = await fetch(webhookURL);
+          const response = await fetch(webhook);
           const data = await response.json();
           if (data.length > 0) {
             count = parseInt(data[data.length - 1].content) || 0;
@@ -32,7 +32,7 @@
           this.innerHTML = count;
   
   
-          await fetch(webhookURL, {
+          await fetch(webhook, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
