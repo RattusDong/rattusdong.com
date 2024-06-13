@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Last Message from Discord Webhook</title>
+</head>
+<body>
+    <h1>Last Message from Discord Webhook</h1>
+    <div id="message-container">
+        <p>Loading message...</p>
+    </div>
+
+    <script>
+        const webhookUrl = 'https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN';
+
+        async function fetchLastMessage(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const messages = await response.json();
+                if (messages && messages.length > 0) {
+                    return messages[0];
+                } else {
+                    return null;
+                }
+            } catch (error) {
+                console.error('Failed to fetch the message:', error);
+            }
+        }
+
+        async function displayLastMessage() {
+            const messageContainer = document.getElementById('message-container');
+            const lastMessage = await fetchLastMessage(webhookUrl);
+            if (lastMessage) {
+                messageContainer.innerHTML = `<p><strong>Author:</strong> ${lastMessage.author.username}</p>
+                                              <p><strong>Content:</strong> ${lastMessage.content}</p>`;
+            } else {
+                messageContainer.innerHTML = '<p>No messages found or an error occurred.</p>';
+            }
+        }
+        displayLastMessage();
+    </script>
+</body>
+</html>
