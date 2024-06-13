@@ -12,35 +12,40 @@
     </div>
 
     <script>
-        const webhookUrl = "https://discord.com/api/webhooks/1250798718572036116/KnFA0o0L7mMUiiznSbpBV7FPz3f0l9kVq4ItxAN3PhLeN1gVsTnxY_e1wJ6z8_AFySm4";
+        const webhookUrl = 'https://discord.com/api/webhooks/1250798718572036116/KnFA0o0L7mMUiiznSbpBV7FPz3f0l9kVq4ItxAN3PhLeN1gVsTnxY_e1wJ6z8_AFySm4';
 
-        async function fetchLastMessage(url) {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const messages = await response.json();
-                if (messages && messages.length > 0) {
-                    return messages[0];
-                } else {
-                    return null;
-                }
-            } catch (error) {
-                console.error('Failed to fetch the message:', error);
-            }
+async function fetchLastMessage(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+        const messages = await response.json();
+        console.log('Messages fetched:', messages); // Log messages to debug
+        if (messages && messages.length > 0) {
+            return messages[0];
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error('Failed to fetch the message:', error);
+        return null; // Ensure to return null in case of error
+    }
+}
 
-        async function displayLastMessage() {
-            const messageContainer = document.getElementById('message-container');
-            const lastMessage = await fetchLastMessage(webhookUrl);
-            if (lastMessage) {
-                messageContainer.innerHTML = `<p><strong>Author:</strong> ${lastMessage.author.username}</p>
-                                              <p><strong>Content:</strong> ${lastMessage.content}</p>`;
-            } else {
-                messageContainer.innerHTML = '<p>No messages found or an error occurred.</p>';
-            }
-        }
+async function displayLastMessage() {
+    const messageContainer = document.getElementById('message-container');
+    const lastMessage = await fetchLastMessage(webhookUrl);
+    if (lastMessage) {
+        messageContainer.innerHTML = `<p><strong>Author:</strong> ${lastMessage.author.username}</p>
+                                      <p><strong>Content:</strong> ${lastMessage.content}</p>`;
+    } else {
+        messageContainer.innerHTML = '<p>No messages found or an error occurred.</p>';
+    }
+}
+
+// Call the function to fetch and display the last message when the page loads
+displayLastMessage();
         displayLastMessage();
     </script>
 </body>
