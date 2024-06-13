@@ -1,29 +1,47 @@
 
 <html>
 
-<head>
-  <title>RattusDong Hub</title>
-
-  <link rel="icon" href="https://raw.githubusercontent.com/RattusDong/rattusdong.com/main/assets/mario%20irl%20transparent.png">
-
-</head>
-
-<body>
+  <head>
+    <title>RattusDong Hub</title>
   
-    <h1> Click number to up !  :)  </h1>
-    <p> </p>
-    <button class="clicky">0</button>
+    <link rel="icon" href="https://raw.githubusercontent.com/RattusDong/rattusdong.com/main/assets/mario%20irl%20transparent.png">
   
-    <script>
-      let count = 0;
-      const webhook = "https://discord.com/api/webhooks/1250798718572036116/KnFA0o0L7mMUiiznSbpBV7FPz3f0l9kVq4ItxAN3PhLeN1gVsTnxY_e1wJ6z8_AFySm4";
+  </head>
   
-      document.querySelector(".clicky").addEventListener("click", function() {
-        count++;
-        this.innerHTML = count;
-      });
-    </script>
+  <body>
+    
+      <h1> Click number to up !  :)  </h1>
+      <p> </p>
+      <button class="clicky">0</button>
+    
+      <script>
+        let count = 0;
+        const webhook = "https://discord.com/api/webhooks/1250798718572036116/KnFA0o0L7mMUiiznSbpBV7FPz3f0l9kVq4ItxAN3PhLeN1gVsTnxY_e1wJ6z8_AFySm4";
   
-  </body>
+        async function fetchCount() {
+          const response = await fetch(webhookURL);
+          const data = await response.json();
+          if (data.length > 0) {
+            count = parseInt(data[data.length - 1].content) || 0;
+            document.querySelector(".clicky").innerHTML = count;
+        }
+      }
+    
+        document.querySelector(".clicky").addEventListener("click", function() {
+          count++;
+          this.innerHTML = count;
   
-  </html>
+  
+          await fetch(webhookURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ content: count.toString() })
+          });
+        });
+      </script>
+    
+    </body>
+    
+    </html>
