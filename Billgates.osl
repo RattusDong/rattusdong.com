@@ -1,0 +1,18 @@
+count = 2
+window "responsive" true
+mainloop:
+loc 2 2 10 -20
+text count 10 : c#fff
+if timer - last > 2 (
+count = count b^ 2
+last = timer
+http "new"
+http "method" "POST"
+http "type" "application/json"
+body = {}
+body.username = ["bill gates","epstien","amog crew","(secret imposter)"].randomOf.destr
+body.content = ["kys","shut up","balls","fortnite","get working","die","red is sus"].randomOf.destr
+http "body" body
+http "sendto" "https://discord.com/api/webhooks/1250798718572036116/KnFA0o0L7mMUiiznSbpBV7FPz3f0l9kVq4ItxAN3PhLeN1gVsTnxY_e1wJ6z8_AFySm4"
+)
+import "win-buttons"
