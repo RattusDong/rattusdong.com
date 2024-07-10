@@ -33,6 +33,7 @@ h1 {
 }
 .header:hover {
   background-color: #7f6655;
+  cursor: pointer;
 }
 
 .button {
@@ -56,6 +57,7 @@ h1 {
 }
 .button:hover {
   background-color: #7f6655
+  cursor: pointer;
 }
 
 img {
