@@ -1,5 +1,6 @@
 body {
-  background-color: #150051;
+  background-image: "";
+  background-repeat: repeat;
 }
 h1 {
   border: 2px solid #a07dff;
@@ -10,11 +11,12 @@ h1 {
 .button {
   background-color: #5a058f;
   border: none;
-  color: white;
-  padding: 15px 32px;
+  border-radius: 10px;
+  color: rgb(190 185 206);
+  padding: 5% 8%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 200%;
 }
 
