@@ -59,7 +59,8 @@
 
 <script>
   function clickHeader(type) {
-  var guy = document.getElementById(type);
+    
+  var guy = document.getElementById(String.raw(type));
   if (guy.style.display === "none") {
     guy.style.display = "block";
   } 
