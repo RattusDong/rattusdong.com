@@ -1,8 +1,20 @@
 body {
-  background-color: rgb(21, 0, 81);
+  background-color: #150051;
 }
 h1 {
-  border: 2px solid rgb(160, 125, 255);
+  border: 2px solid #a07dff;
   font-family: Roboto;
-  color: rgb(228, 226, 234);
+  color: rgb(190 185 206);
 }
+
+.button {
+  background-color: #5a058f;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
