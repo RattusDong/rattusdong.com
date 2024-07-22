@@ -5,18 +5,62 @@
 
   <link rel="icon" href="https://raw.githubusercontent.com/RattusDong/rattusdong.com/main/assets/mario%20irl%20transparent.png">
 
-  <link rel="stylesheet" href="styles.css?v=15">
+  <link rel="stylesheet" href="styles.css?v=16">
 </head>
 
 <body>
   <div>
-    <p class="buttonS"> &lt </p>
-    <p class="title"> Place Holdering</p>
-    <p class="buttonS"> &gt </p>
+    <p onclick="indexer(-1)" class="buttonS"> &lt </p>
+    <p id="title", class="title"> </p>
+    <p onclick="indexer(1)" class="buttonS"> &gt </p>
   </div>
 
-<audio controls src="assets/music/The Kingdom of Rattus.mp3", style="width:50%;", style="height:8%;", alt="Audio not found :("> width</audio>
+<audio controls id="player", src="", style="width:50%; height:8%;", alt="Audio not found :("> width</audio>
 
 </body>
+
+<script> 
+let index = 1;
+
+let song = [
+"assets/music/The Kingdom of Rattus.mp3",
+"assets/music/Rattus Church Good.mp3",
+"assets/music/Rattus Church Evil.mp3"
+];
+
+let songnames = [
+"(1) The Kingdom of Rattus", 
+"(2) The Holy Church of Rattus",
+"(2.2) The True Church of Rattus"
+];
+
+let songPlayer = document.getElementById("player");
+let songTitle = document.getElementById("title");
+
+function onPageLoad() {
+  change();
+}
+ document.addEventListener("DOMContentLoaded", onPageLoad);
+
+function indexer(num) {
+  index += num;
+  if (index > song.length - 1) {
+    index = 0;
+  }
+  else if (index < 0) {
+    index = song.length - 1;
+  }
+  change();
+}
+
+
+function change() {
+  songTitle.textContent = songnames[index];
+  songPlayer.src = songs[index];
+  songPlayer.play();
+}
+        
+
+</script>
 
 </html>
