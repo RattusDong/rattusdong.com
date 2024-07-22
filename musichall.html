@@ -15,12 +15,14 @@
     <p onclick="indexer(1)" class="buttonS"> &gt </p>
   </div>
 
-<audio controls id="player", src="", style="width:50%; height:8%;", alt="Audio not found :("> width</audio>
+<audio controls id="player" src="" style="width:50%; height:8%;" alt="Audio not found :("> width</audio>
 
 </body>
 
 <script> 
-let index = 1;
+document.addEventListener("DOMContentLoaded", onPageLoad);
+
+let index = 0;
 
 let song = [
 "assets/music/The Kingdom of Rattus.mp3",
@@ -40,7 +42,7 @@ let songTitle = document.getElementById("title");
 function onPageLoad() {
   change();
 }
- document.addEventListener("DOMContentLoaded", onPageLoad);
+
 
 function indexer(num) {
   index += num;
@@ -56,7 +58,7 @@ function indexer(num) {
 
 function change() {
   songTitle.textContent = songnames[index];
-  songPlayer.src = songs[index];
+  songPlayer.src = song[index];
   songPlayer.play();
 }
         
