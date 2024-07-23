@@ -118,6 +118,7 @@ songPlayer.addEventListener("loadedmetadata", () => {
   totalMinutes = Math.floor(totalDuration / 60);
   totalSeconds = Math.floor(totalDuration % 60).toString().padStart(2, '0');
   durationText.textContent = `0:00 / ${totalMinutes}:${totalSeconds}`;
+  scrubBar.max = totalDuration;
 });
 
 scrubBar.addEventListener("input", () => {
