@@ -17,15 +17,18 @@
     <!-- next song -->
     <p onclick="indexer(1)" class="buttonS"> &gt </p>
   </div>
+
   <!-- playbutton -->
-  <p onclick="togglePlay()" id="playpause" class="playpause"> ⏵︎ </p>
+  <p onclick="togglePlay()" id="playpause" class="playpause"> ⏵︎ </p> <br>
+
   <div>
     <!-- duration as text -->
     <p id="durationText" class="durationText"> </p>
-    <!-- scrub bar-->
+    <!-- scrub bar very cool -->
     <input type="range" id="scrubBar" min="0" value="0" step="1" style="width: 100%;">
   </div>
   
+
   <!-- audio play that actually does the stuff, always hidden -->
   <audio controls id="player" src="" style="display:none;" alt="Audio not found :("> width</audio>
 
@@ -60,6 +63,7 @@ const songPlayer = document.getElementById("player");
 const songTitle = document.getElementById("title");
 const playpause = document.getElementById("playpause");
 const durationText = document.getElementById("durationText");
+const scrubBar = document.getElementById("scrubBar");
 
 //load page
 function onPageLoad() {
@@ -99,12 +103,13 @@ function togglePlay() {
   }
 }
 
-//update text song duration
+//update text song duration and scrub
 songPlayer.addEventListener("timeupdate", () => {
   const currentTime = songPlayer.currentTime;
   const currentMinutes = Math.floor(currentTime / 60);
   const currentSeconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
   durationText.textContent = `${currentMinutes}:${currentSeconds} / ${totalMinutes}:${totalSeconds}`;
+  scrubBar.value = currentTime;
 });
 
 //when audio is loaded, set total time variables and reset duration
@@ -113,6 +118,10 @@ songPlayer.addEventListener("loadedmetadata", () => {
   totalMinutes = Math.floor(totalDuration / 60);
   totalSeconds = Math.floor(totalDuration % 60).toString().padStart(2, '0');
   durationText.textContent = `0:00 / ${totalMinutes}:${totalSeconds}`;
+});
+
+scrubBar.addEventListener("input", () => {
+  songPlayer.currentTime = scrubBar.value;
 });
 
 //when song ends
