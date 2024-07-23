@@ -5,7 +5,7 @@
 
   <link rel="icon" href="https://raw.githubusercontent.com/RattusDong/rattusdong.com/main/assets/mario%20irl%20transparent.png">
 
-  <link rel="stylesheet" href="styles.css?v=18">
+  <link rel="stylesheet" href="styles.css?v=20">
 </head>
 
 <body>
@@ -47,6 +47,10 @@ let songnames = [
 "(2.2) The True Church of Rattus"
 ];
 
+//tracks song full length
+let totalMinutes = 0;
+let totalSeconds = 0;
+
 //elements
 const songPlayer = document.getElementById("player");
 const songTitle = document.getElementById("title");
@@ -79,21 +83,37 @@ function change() {
 
 //play/pause on click play button
 function togglePlay() {
-      if (songPlayer.paused) {
-        songPlayer.play();
-        playpause.textContent = "⏸︎";
-      } else {
-        songPlayer.pause();
-        playpause.textContent = "⏵︎";
-      }
-}   
+ if (songPlayer.paused || songPlayer.ended) {
+   if (songPlayer.ended) {
+     songPlayer.currentTime = 0;
+    }
+    songPlayer.play();
+    playPauseButton.textContent = "⏸︎";
+  } else {
+    songPlayer.pause();
+    playPauseButton.textContent = "⏵︎";
+  }
+}
 
-//update text duration
+//update text song duration
 songPlayer.addEventListener("timeupdate", () => {
-const currentTime = songPlayer.currentTime;
-const minutes = Math.floor(currentTime / 60);
-const seconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
-durationText.textContent = `${minutes}:${seconds}`;
+  const currentTime = songPlayer.currentTime;
+  const minutes = Math.floor(currentTime / 60);
+  const seconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
+  durationText.textContent = `${currentMinutes}:${currentSeconds} / ${totalMinutes}:${totalSeconds}`;
+});
+
+//when audio is loaded, set total time variables and reset duration
+songPlayer.addEventListener("loadedmetadata", () => {
+  const totalDuration = songPlayer.duration;
+  totalMinutes = Math.floor(totalDuration / 60);
+  totalSeconds = Math.floor(totalDuration % 60).toString().padStart(2, '0');
+  durationText.textContent = `0:00 / ${totalMinutes}:${totalSeconds}`;
+});
+
+//when song ends
+songPlayer.addEventListener("ended", () => {
+  playPauseButton.textContent = "⏵︎";
 });
 
 </script>
