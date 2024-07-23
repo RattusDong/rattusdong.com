@@ -18,10 +18,14 @@
     <p onclick="indexer(1)" class="buttonS"> &gt </p>
   </div>
   <!-- playbutton -->
-  <p onclick="togglePlay()" id="playpause" class="playpause"> ⏵︎ </p> <br>
-  <!-- duration as text -->
-  <p id="durationText" class="durationText"> </p>
-
+  <p onclick="togglePlay()" id="playpause" class="playpause"> ⏵︎ </p>
+  <div>
+    <!-- duration as text -->
+    <p id="durationText" class="durationText"> </p>
+    <!-- scrub bar-->
+    <input type="range" id="scrubBar" min="0" value="0" step="1" style="width: 100%;">
+  </div>
+  
   <!-- audio play that actually does the stuff, always hidden -->
   <audio controls id="player" src="" style="display:none;" alt="Audio not found :("> width</audio>
 
@@ -34,14 +38,14 @@ document.addEventListener("DOMContentLoaded", onPageLoad);
 let index = 0;
 
 //array for song files
-let song = [
+const song = [
 "assets/music/The Kingdom of Rattus.mp3",
 "assets/music/Rattus Church Good.mp3",
 "assets/music/Rattus Church Evil.mp3"
 ];
 
 //array for song titles
-let songnames = [
+const songnames = [
 "(1) The Kingdom of Rattus", 
 "(2) The Holy Church of Rattus",
 "(2.2) The True Church of Rattus"
@@ -78,7 +82,7 @@ function indexer(num) {
 function change() {
   songTitle.textContent = songnames[index];
   songPlayer.src = song[index];
-  playPauseButton.textContent = "⏵︎";
+  playpause.textContent = "⏵︎";
 }
 
 //play/pause on click play button
@@ -88,10 +92,10 @@ function togglePlay() {
      songPlayer.currentTime = 0;
     }
     songPlayer.play();
-    playPauseButton.textContent = "⏸︎";
+    playpause.textContent = "⏸︎";
   } else {
     songPlayer.pause();
-    playPauseButton.textContent = "⏵︎";
+    playpause.textContent = "⏵︎";
   }
 }
 
@@ -113,7 +117,7 @@ songPlayer.addEventListener("loadedmetadata", () => {
 
 //when song ends
 songPlayer.addEventListener("ended", () => {
-  playPauseButton.textContent = "⏵︎";
+  playpause.textContent = "⏵︎";
 });
 
 </script>
