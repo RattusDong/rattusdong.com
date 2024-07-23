@@ -17,8 +17,10 @@
     <!-- next song -->
     <p onclick="indexer(1)" class="buttonS"> &gt </p>
   </div>
+  <!-- playbutton -->
   <p onclick="togglePlay()" id="playpause" class="playpause"> ⏵︎ </p> <br>
-  <p id="duration" class="duration"> </p>
+  <!-- duration as text -->
+  <p id="duration" class="durationText"> </p>
 
 <audio controls id="player" src="" style="width:0px;" alt="Audio not found :("> width</audio>
 
@@ -41,8 +43,10 @@ let songnames = [
 "(2.2) The True Church of Rattus"
 ];
 
-let songPlayer = document.getElementById("player");
-let songTitle = document.getElementById("title");
+const songPlayer = document.getElementById("player");
+const songTitle = document.getElementById("title");
+const playpause = document.getElementById("playpause");
+const durationText = document.getElementById("durationText");
 
 function onPageLoad() {
   change();
@@ -66,15 +70,24 @@ function change() {
   songPlayer.src = song[index];
 }
 
+//play/pause on click play button
 function togglePlay() {
       if (songPlayer.paused) {
         songPlayer.play();
-        playPauseButton.textContent = "⏸︎";
+        playpause.textContent = "⏸︎";
       } else {
         songPlayer.pause();
-        playPauseButton.textContent = "⏵︎";
+        playpause.textContent = "⏵︎";
       }
-        
+}   
+
+//update text duration
+songPlayer.addEventListener("timeupdate", () => {
+const currentTime = songPlayer.currentTime;
+const minutes = Math.floor(currentTime / 60);
+const seconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
+durationText.textContent = `${minutes}:${seconds}`;
+});
 
 </script>
 
