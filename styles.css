@@ -152,7 +152,7 @@ audio {
 }
 
 /* displays time through song musichall  */
-.duration {
+.durationText {
   background-color: #291608;
   border: none;
   border-radius: 15%;

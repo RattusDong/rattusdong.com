@@ -5,7 +5,7 @@
 
   <link rel="icon" href="https://raw.githubusercontent.com/RattusDong/rattusdong.com/main/assets/mario%20irl%20transparent.png">
 
-  <link rel="stylesheet" href="styles.css?v=17">
+  <link rel="stylesheet" href="styles.css?v=18">
 </head>
 
 <body>
@@ -20,39 +20,45 @@
   <!-- playbutton -->
   <p onclick="togglePlay()" id="playpause" class="playpause"> ⏵︎ </p> <br>
   <!-- duration as text -->
-  <p id="duration" class="durationText"> </p>
+  <p id="durationText" class="durationText"> </p>
 
-<audio controls id="player" src="" style="width:0px;" alt="Audio not found :("> width</audio>
+  <!-- audio play that actually does the stuff, always hidden -->
+  <audio controls id="player" src="" style="display:none;" alt="Audio not found :("> width</audio>
 
 </body>
 
 <script> 
 document.addEventListener("DOMContentLoaded", onPageLoad);
 
+//tracks current song
 let index = 0;
 
+//array for song files
 let song = [
 "assets/music/The Kingdom of Rattus.mp3",
 "assets/music/Rattus Church Good.mp3",
 "assets/music/Rattus Church Evil.mp3"
 ];
 
+//array for song titles
 let songnames = [
 "(1) The Kingdom of Rattus", 
 "(2) The Holy Church of Rattus",
 "(2.2) The True Church of Rattus"
 ];
 
+//elements
 const songPlayer = document.getElementById("player");
 const songTitle = document.getElementById("title");
 const playpause = document.getElementById("playpause");
 const durationText = document.getElementById("durationText");
 
+//load page
 function onPageLoad() {
   change();
 }
 
-
+//change song index
 function indexer(num) {
   index += num;
   if (index > song.length - 1) {
@@ -64,10 +70,11 @@ function indexer(num) {
   change();
 }
 
-
+//change current song to index
 function change() {
   songTitle.textContent = songnames[index];
   songPlayer.src = song[index];
+  playPauseButton.textContent = "⏵︎";
 }
 
 //play/pause on click play button
