@@ -10,12 +10,17 @@
 
 <body>
   <div>
+    <!-- prev song -->
     <p onclick="indexer(-1)" class="buttonS"> &lt </p>
-    <p id="title", class="title"> </p>
+    <!-- song title -->
+    <p id="title" class="title"> </p>
+    <!-- next song -->
     <p onclick="indexer(1)" class="buttonS"> &gt </p>
   </div>
+  <p onclick="togglePlay()" id="playpause" class="playpause"> ⏵︎ </p> <br>
+  <p id="duration" class="duration"> </p>
 
-<audio controls id="player" src="" style="width:50%; height:8%;" alt="Audio not found :("> width</audio>
+<audio controls id="player" src="" style="width:0px;" alt="Audio not found :("> width</audio>
 
 </body>
 
@@ -60,6 +65,15 @@ function change() {
   songTitle.textContent = songnames[index];
   songPlayer.src = song[index];
 }
+
+function togglePlay() {
+      if (songPlayer.paused) {
+        songPlayer.play();
+        playPauseButton.textContent = "⏸︎";
+      } else {
+        songPlayer.pause();
+        playPauseButton.textContent = "⏵︎";
+      }
         
 
 </script>
