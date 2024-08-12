@@ -152,6 +152,7 @@ function ratClick() {
   ratcount++;
   rat.style.filter = `hue-rotate(${ratcount * 18}deg)`;
   if (ratcount == 10) {
+    funkymode = True;
     rat.onclick = null;
     document.body.style.backgroundImage = "url('assets/Wacky dirty.png')";
 
