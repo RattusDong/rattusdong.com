@@ -127,7 +127,7 @@ function togglePlay() {
 //when u click the rat
 function ratClick() {
   ratcount++;
-  image.style.filter = `hue-rotate(${ratcount * 18}deg)`;
+  rat.style.filter = `hue-rotate(${ratcount * 18}deg)`;
   if (ratcount == 10) {
     rat.onclick = null;
     background.style.backgroundImage = "url('assets/Wacky dirty.png')";
