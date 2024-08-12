@@ -71,7 +71,7 @@ const scrubBar = document.getElementById("scrubBar");
 function onPageLoad() {
   const linkID = getQueryParam("ID");
       if (linkID !== null && !isNaN(linkID) && linkID >= 0 && linkID < songs.length) {
-        index = parseInt(songParam, 10);
+        index = parseInt(songParam);
       }
   change();
 }
