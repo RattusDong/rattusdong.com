@@ -67,7 +67,7 @@ const playpause = document.getElementById("playpause");
 const durationText = document.getElementById("durationText");
 const scrubBar = document.getElementById("scrubBar");
 
-//load page and check for paramater in link
+//load page and load song id if in link
 function onPageLoad() {
   const linkID = getQueryParam("ID");
       if (linkID !== null && !isNaN(linkID) && linkID >= 0 && linkID < song.length) {
@@ -76,6 +76,7 @@ function onPageLoad() {
   change();
 }
 
+//get parameter in link
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
