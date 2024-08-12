@@ -11,11 +11,11 @@
 <body>
   <div>
     <!-- prev song -->
-    <p onclick="indexer(-1)" class="buttonS"> &lt </p>
+    <p id="left" onclick="indexer(-1)" class="buttonS"> &lt </p>
     <!-- song title -->
     <p id="title" class="title"> </p>
     <!-- next song -->
-    <p onclick="indexer(1)" class="buttonS"> &gt </p>
+    <p id="right" onclick="indexer(1)" class="buttonS"> &gt </p>
   </div>
 
   <!-- playbutton -->
@@ -35,7 +35,7 @@
   <br>
   <br>
   <br>
-  <img id="rat" src="assets/rat_mouse_PNG23553.png" alt="hot rat" style="width:10%;" onclick="ratClick()">
+  <img id="rat" src="assets/rat_mouse_PNG23553.png" alt="hot rat" style="width:3.284%;" onclick="ratClick()">
 
 </body>
 
@@ -45,11 +45,17 @@ document.addEventListener("DOMContentLoaded", onPageLoad);
 //tracks current song
 let index = 0;
 let ratcount = 0;
+let funkyMode = false;
 
 //array for song files
 const song = [
 "assets/music/The Kingdom of Rattus.mp3",
 "assets/music/Rattus Church Good.mp3",
+"assets/music/A Wild Rodent Appears.mp3"
+];
+//array for alt song files
+const songAlt = [
+"assets/music/The Kingdom of Rattus alt.mp3",
 "assets/music/Rattus Church Evil.mp3",
 "assets/music/A Wild Rodent Appears.mp3"
 ];
@@ -58,8 +64,14 @@ const song = [
 const songnames = [
 "(1) The Kingdom of Rattus", 
 "(2) The Holy Church of Rattus",
-"(2.2) The True Church of Rattus",
 "(3) A Wild Rodent Appears!"
+];
+
+//array for alt song titles
+const songnamesAlt = [
+"[①] Una cappella del Regno di Rattus",
+"[②] The True Church of Rattus",
+"[③] A Wild Rodent Appears!"
 ];
 
 //tracks current song full length
@@ -67,6 +79,8 @@ let totalMinutes = 0;
 let totalSeconds = 0;
 
 //elements
+const leftButton = document.getElementById("left");
+const rightButton = document.getElementById("right");
 const songPlayer = document.getElementById("player");
 const songTitle = document.getElementById("title");
 const playpause = document.getElementById("playpause");
@@ -74,12 +88,16 @@ const durationText = document.getElementById("durationText");
 const scrubBar = document.getElementById("scrubBar");
 const rat = document.getElementById("rat");
 
-//load page and load song id if in link
+//load page and load song id if in link and funky mode
 function onPageLoad() {
   const linkID = getQueryParam("ID");
       if (linkID !== null && !isNaN(linkID) && linkID >= 0 && linkID < song.length) {
         index = parseInt(linkID);
       }
+  const funky = getQueryParam("alt");
+  if (funky !== null) {
+    funkyMode = True;
+  }
   change();
 }
 
@@ -103,8 +121,15 @@ function indexer(num) {
 
 //change current song to index
 function change() {
-  songTitle.textContent = songnames[index];
-  songPlayer.src = song[index];
+
+  if (funkyMode) {
+  songTitle.textContent = songnamesAlt[index];
+  songPlayer.src = songAlt[index];
+  }
+  else {
+    songTitle.textContent = songnames[index];
+    songPlayer.src = song[index];
+  }
   playpause.textContent = "⏵︎";
 }
 
@@ -129,6 +154,12 @@ function ratClick() {
   if (ratcount == 10) {
     rat.onclick = null;
     document.body.style.backgroundImage = "url('assets/Wacky dirty.png')";
+
+    leftButton.style.backgroundColor = '#339922';
+    rightButton.style.backgroundColor = '#339922';
+    songTitle.style.backgroundColor = '#339922';
+    playpause.style.backgroundColor = '#339922';
+    durationText.style.backgroundColor = '#339922';
   }
 }
 
