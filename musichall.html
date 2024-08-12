@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <div id="background"></div>
   <div>
     <!-- prev song -->
     <p onclick="indexer(-1)" class="buttonS"> &lt </p>
@@ -32,6 +33,11 @@
   <!-- audio play that actually does the stuff, always hidden -->
   <audio controls id="player" src="" style="display:none;" alt="Audio not found :("> width</audio>
 
+  <br>
+  <br>
+  <br>
+  <img id="rat" src="assets/rat_mouse_PNG23553.png" alt="hot rat" style="width:2%;" onclick="ratClick()">
+
 </body>
 
 <script> 
@@ -39,6 +45,7 @@ document.addEventListener("DOMContentLoaded", onPageLoad);
 
 //tracks current song
 let index = 0;
+let ratcount = 0;
 
 //array for song files
 const song = [
@@ -61,11 +68,13 @@ let totalMinutes = 0;
 let totalSeconds = 0;
 
 //elements
+const background = document.getElementById('background');
 const songPlayer = document.getElementById("player");
 const songTitle = document.getElementById("title");
 const playpause = document.getElementById("playpause");
 const durationText = document.getElementById("durationText");
 const scrubBar = document.getElementById("scrubBar");
+const rat = document.getElementById("rat");
 
 //load page and load song id if in link
 function onPageLoad() {
@@ -112,6 +121,16 @@ function togglePlay() {
   } else {
     songPlayer.pause();
     playpause.textContent = "⏵︎";
+  }
+}
+
+//when u click the rat
+function ratClick() {
+  ratcount++;
+  image.style.filter = `hue-rotate(${ratcount * 18}deg)`;
+  if (ratcount == 10) {
+    rat.onclick = null;
+    background.style.backgroundImage = "url('assets/Wacky dirty.png')";
   }
 }
 
