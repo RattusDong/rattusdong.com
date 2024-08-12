@@ -5,11 +5,10 @@
 
   <link rel="icon" href="https://raw.githubusercontent.com/RattusDong/rattusdong.com/main/assets/mario%20irl%20transparent.png">
 
-  <link rel="stylesheet" href="styles.css?v=20">
+  <link rel="stylesheet" href="styles.css?v=21">
 </head>
 
 <body>
-  <div id="background"></div>
   <div>
     <!-- prev song -->
     <p onclick="indexer(-1)" class="buttonS"> &lt </p>
@@ -68,7 +67,6 @@ let totalMinutes = 0;
 let totalSeconds = 0;
 
 //elements
-const background = document.getElementById('background');
 const songPlayer = document.getElementById("player");
 const songTitle = document.getElementById("title");
 const playpause = document.getElementById("playpause");
@@ -130,7 +128,10 @@ function ratClick() {
   rat.style.filter = `hue-rotate(${ratcount * 18}deg)`;
   if (ratcount == 10) {
     rat.onclick = null;
-    background.style.backgroundImage = "url('assets/Wacky dirty.png')";
+    document.body.style.backgroundImage = "url('assets/Wacky dirty.png')";
+    document.body.style.backgroundPosition = "left top";
+    document.body.style.backgroundRepeat = "repeat";
+    document.body.style.backgroundSize = "500px";
   }
 }
 

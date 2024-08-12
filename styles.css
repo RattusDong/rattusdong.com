@@ -2,7 +2,7 @@ body {
   background-image: url("assets/dirty.jpg");
   background-position: left top;
   background-repeat: repeat;
-  background-size: 500px;
+  background-size: 512px;
 
   #accounts, #enemies, #partners, #funnies {
     display: none;
