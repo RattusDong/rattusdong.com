@@ -70,10 +70,15 @@ const scrubBar = document.getElementById("scrubBar");
 //load page and check for paramater in link
 function onPageLoad() {
   const linkID = getQueryParam("ID");
-      if (linkID !== null && !isNaN(linkID) && linkID >= 0 && linkID < songs.length) {
-        index = parseInt(songParam);
+      if (linkID !== null && !isNaN(linkID) && linkID >= 0 && linkID < song.length) {
+        index = parseInt(linkID);
       }
   change();
+}
+
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
 }
 
 //change song index
