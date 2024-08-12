@@ -91,12 +91,12 @@ const rat = document.getElementById("rat");
 //load page and load song id if in link and funky mode
 function onPageLoad() {
   const linkID = getQueryParam("ID");
-      if (linkID !== null && !isNaN(linkID) && linkID >= 0 && linkID < song.length) {
-        index = parseInt(linkID);
-      }
+  if (linkID !== null && !isNaN(linkID) && linkID >= 0 && linkID < song.length) {
+    index = parseInt(linkID);
+  }
   const funky = getQueryParam("alt");
   if (funky !== null) {
-    funkyMode = True;
+    funkyMode = true;
   }
   change();
 }
@@ -152,7 +152,7 @@ function ratClick() {
   ratcount++;
   rat.style.filter = `hue-rotate(${ratcount * 18}deg)`;
   if (ratcount == 10) {
-    funkyMode = True;
+    funkyMode = true;
     rat.onclick = null;
     document.body.style.backgroundImage = "url('assets/Wacky dirty.png')";
 
