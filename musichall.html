@@ -97,6 +97,7 @@ function onPageLoad() {
   const funky = getQueryParam("alt");
   if (funky !== null) {
     funkyMode = true;
+    funkyTime();
   }
   change();
 }
