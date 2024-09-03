@@ -162,9 +162,6 @@ function ratClick() {
   ratcount++;
   rat.style.filter = `hue-rotate(${ratcount * 18}deg)`;
   if (ratcount == 10) {
-    funkyMode = true;
-    rat.onclick = null;
-
     funkyTime();
 
     change();
@@ -172,6 +169,11 @@ function ratClick() {
 }
 
 function funkyTime() {
+  ratcount = 10;
+  rat.style.filter = `hue-rotate(${ratcount * 18}deg)`;
+  funkyMode = true;
+  rat.onclick = null;
+
   document.body.style.backgroundImage = "url('assets/Wacky dirty.png')";
 
 leftButton.style.backgroundColor = '#1f2682';
