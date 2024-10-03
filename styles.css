@@ -25,8 +25,8 @@ h1 {
 }
 
 .centre {
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  text-align: center;
 }
 /* for dropdown menu on index */
 .header {
