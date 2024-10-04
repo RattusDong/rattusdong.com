@@ -25,6 +25,9 @@ h1 {
 }
 
 .centre {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   margin: 0 auto;
 }
