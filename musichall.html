@@ -158,8 +158,8 @@ function change() {
     songTitle.textContent = songnames[index];
     songPlayer.src = song[index];
   }
-  document.getElementById("play").style.display = "block";
-  document.getElementById("pause").style.display = "none";
+  document.getElementById("play").style.display = "none";
+  document.getElementById("pause").style.display = "block";
 }
 
 //play/pause on click play button
@@ -169,12 +169,12 @@ function togglePlay() {
      songPlayer.currentTime = 0;
     }
     songPlayer.play();
-    document.getElementById("play").style.display = "none";
-    document.getElementById("pause").style.display = "block";
-  } else {
-    songPlayer.pause();
     document.getElementById("play").style.display = "block";
     document.getElementById("pause").style.display = "none";
+  } else {
+    songPlayer.pause();
+    document.getElementById("play").style.display = "none";
+    document.getElementById("pause").style.display = "block";
   }
 }
 
