@@ -178,11 +178,11 @@ audio {
 .playpause {
   transition-duration: 0.25s;
   width: 100%;
-  height: 100%; /* Ensure both icons take up the same space */
+  height: 100%;
   display: block;
   -webkit-filter: drop-shadow(5px 5px 5px #222222);
   filter: drop-shadow(5px 5px 5px #222222);
-  margin: 3% auto; /* Centering the icon */
+  margin: 3% auto;
   background-color: #291608;
   border: none;
   border-radius: 25%;
@@ -214,10 +214,14 @@ audio {
 }
 
 /* for music player */
+
 .playpausebox {
   width: 20%;
+  height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #291608;
+  border-radius: 25%;
 }
 
