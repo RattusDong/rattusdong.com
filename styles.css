@@ -3,14 +3,15 @@ body {
   background-position: left top;
   background-repeat: repeat;
   background-size: 512px;
-
-  #accounts, #enemies, #partners, #funnies {
-    display: none;
-  }
-  #featured {
-    display: block;
-  }
 }
+
+#accounts, #enemies, #partners, #funnies {
+  display: none;
+}
+#featured {
+  display: block;
+}
+
 h1 {
   text-size-adjust: none;
   background-color: #291608;
