@@ -228,9 +228,15 @@ audio {
 
 .playpausebox {
   width: 20%;
-  height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #291608;
+}
+.playpausebox:hover {
+  background-color: #7f6655;
+  cursor: pointer;
+  border-radius: 25%;
+  padding: 10%;
 }
 
