@@ -251,7 +251,8 @@ scrubBar.addEventListener("input", () => {
 
 //when song ends
 songPlayer.addEventListener("ended", () => {
-  playpause.textContent = "⏵︎";
+  document.getElementById("play").style.display = "block";
+  document.getElementById("pause").style.display = "none";
   scrubBar.value = scrubBar.max;
 });
 
