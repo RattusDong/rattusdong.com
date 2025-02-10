@@ -14,6 +14,8 @@
 <div>
   <p class="button" onclick="setgame('https://rattusdong.com/spaceinvasion')">Space Invasion</p>
   <p class="button" onclick="setgame('https://origin.mistium.com/launch?embed=https%3A%2F%2Fraw.githubusercontent.com%2FMistium%2Fapps%2Fmain%2Fall%2Ffortnite+skibidi+2024%2Fscript.osl')">Skibidi Fortnite</p>
+  <p class="button" onclick="showSmell()">Smell the Feet</p>
+  
 </div>
 </body>
 <script>
@@ -21,5 +23,31 @@
     var iframe = document.getElementById('gameframe')
     iframe.src = game;
   }
+
+  function showSmell() {
+      let smell = document.createElement('div');
+      smell.className = 'smell';
+      smell.innerHTML = '💨 Phew!';
+      document.body.appendChild(smell);
+  
+      setTimeout(() => smell.remove(), 3000); // Remove after 3 seconds
+    }
 </script>
+<style>
+  .smell {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 2em;
+    color: green;
+    opacity: 0.7;
+    animation: floatSmell 3s infinite ease-in-out;
+  }
+
+  @keyframes floatSmell {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+    50% { transform: translateY(-20px) rotate(10deg); opacity: 0.4; }
+    100% { transform: translateY(0) rotate(-10deg); opacity: 0.7; }
+  }
+</style>
 </html>
