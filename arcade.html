@@ -14,40 +14,66 @@
 <div>
   <p class="button" onclick="setgame('https://rattusdong.com/spaceinvasion')">Space Invasion</p>
   <p class="button" onclick="setgame('https://origin.mistium.com/launch?embed=https%3A%2F%2Fraw.githubusercontent.com%2FMistium%2Fapps%2Fmain%2Fall%2Ffortnite+skibidi+2024%2Fscript.osl')">Skibidi Fortnite</p>
-  <p class="button" onclick="showSmell()">Smell the Feet</p>
+  <button class="smellyFeetButton" onclick="releaseOdor()">Smell the Feet!</button>
   
 </div>
 </body>
 <script>
-  function setgame(game) {
-    var iframe = document.getElementById('gameframe')
-    iframe.src = game;
-  }
-
-  function showSmell() {
-      let smell = document.createElement('div');
-      smell.className = 'smell';
-      smell.innerHTML = '💨 Phew!';
-      document.body.appendChild(smell);
-  
-      setTimeout(() => smell.remove(), 3000); // Remove after 3 seconds
+  function releaseOdor() {
+    const numberOfOdors = 20; // Increase number for a stronger effect
+    for (let i = 0; i < numberOfOdors; i++) {
+      const odor = document.createElement('div');
+      odor.className = 'odor';
+      // Position the odor near the bottom center (simulate feet location)
+      const leftPos = window.innerWidth / 2 + (Math.random() * 100 - 50);
+      const topPos = window.innerHeight - 50 + (Math.random() * 20 - 10);
+      odor.style.left = leftPos + 'px';
+      odor.style.top = topPos + 'px';
+      odor.textContent = '💨';  // You can replace this emoji with any icon or text
+      document.body.appendChild(odor);
+      
+      // Remove the particle after the animation completes
+      setTimeout(() => {
+        odor.remove();
+      }, 3000);
     }
+  }
 </script>
 <style>
-  .smell {
+  /* Style for each odor particle */
+  .odor {
     position: absolute;
-    top: 50%;
-    left: 50%;
     font-size: 2em;
-    color: green;
-    opacity: 0.7;
-    animation: floatSmell 3s infinite ease-in-out;
+    opacity: 0.9;
+    pointer-events: none;
+    animation: odorRise 3s ease-out forwards;
   }
-
-  @keyframes floatSmell {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
-    50% { transform: translateY(-20px) rotate(10deg); opacity: 0.4; }
-    100% { transform: translateY(0) rotate(-10deg); opacity: 0.7; }
+  
+  /* Animation for the odor particles */
+  @keyframes odorRise {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-150px) scale(1.5) rotate(20deg);
+      opacity: 0;
+    }
+  }
+  
+  /* Style for the button */
+  .smellyFeetButton {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
   }
 </style>
 </html>
