@@ -19,49 +19,90 @@
 </div>
 </body>
 <script>
-  function releaseOdor() {
-    const numberOfOdors = 20; // Increase number for a stronger effect
-    for (let i = 0; i < numberOfOdors; i++) {
-      const odor = document.createElement('div');
-      odor.className = 'odor';
-      // Position the odor near the bottom center (simulate feet location)
-      const leftPos = window.innerWidth / 2 + (Math.random() * 100 - 50);
-      const topPos = window.innerHeight - 50 + (Math.random() * 20 - 10);
-      odor.style.left = leftPos + 'px';
-      odor.style.top = topPos + 'px';
-      odor.textContent = '💨';  // You can replace this emoji with any icon or text
-      document.body.appendChild(odor);
-      
-      // Remove the particle after the animation completes
-      setTimeout(() => {
-        odor.remove();
-      }, 3000);
-    }
+  function setgame(game) {
+    var iframe = document.getElementById('gameframe')
+    iframe.src = game;
   }
+
+  function releaseOdor() {
+      // Create a smelly overlay that covers the entire screen
+      const overlay = document.createElement('div');
+      overlay.className = 'smelly-overlay';
+      document.body.appendChild(overlay);
+      // Remove the overlay after the animation completes (5 seconds)
+      setTimeout(() => overlay.remove(), 5000);
+      
+      // Create a large number of odor particles for an extra smelly effect
+      const numberOfOdors = 150; // Increased for a super smelly effect
+      for (let i = 0; i < numberOfOdors; i++) {
+        const odor = document.createElement('div');
+        odor.className = 'odor';
+        // Random position along the bottom of the screen (simulate feet area)
+        const leftPos = Math.random() * window.innerWidth;
+        const topPos = window.innerHeight - 50 + (Math.random() * 20 - 10);
+        odor.style.left = leftPos + 'px';
+        odor.style.top = topPos + 'px';
+        // Use an emoji to represent the odor particle
+        odor.textContent = '💨';
+        // Introduce a random delay for each particle's animation
+        odor.style.animationDelay = (Math.random() * 2) + 's';
+        document.body.appendChild(odor);
+        
+        // Remove each odor particle after its animation ends
+        setTimeout(() => odor.remove(), 5000);
+      }
+    }
 </script>
 <style>
+  /* Remove any unwanted scrollbars */
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+
   /* Style for each odor particle */
   .odor {
     position: absolute;
     font-size: 2em;
-    opacity: 0.9;
+    opacity: 1;
     pointer-events: none;
-    animation: odorRise 3s ease-out forwards;
+    animation: odorRise 5s ease-out forwards;
   }
   
-  /* Animation for the odor particles */
   @keyframes odorRise {
     0% {
       transform: translateY(0) scale(1);
       opacity: 1;
     }
     100% {
-      transform: translateY(-150px) scale(1.5) rotate(20deg);
+      transform: translateY(-300px) scale(2.5) rotate(45deg);
       opacity: 0;
     }
   }
   
-  /* Style for the button */
+  /* Smelly overlay to saturate the screen with a stinky vibe */
+  .smelly-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* A radial gradient with earthy, smog-like colors */
+    background: radial-gradient(circle, rgba(200,180,50,0.3) 0%, rgba(80,60,20,0.8) 100%);
+    opacity: 0;
+    animation: overlayFadeInOut 5s forwards;
+    pointer-events: none;
+    z-index: 999;
+  }
+  
+  @keyframes overlayFadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  /* Style for the "Smell the Feet!" button */
   .smellyFeetButton {
     position: fixed;
     bottom: 20px;
@@ -74,6 +115,7 @@
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    z-index: 1000;
   }
 </style>
 </html>
