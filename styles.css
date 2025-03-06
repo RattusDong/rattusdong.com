@@ -14,13 +14,13 @@ body {
   
   h1 {
     text-size-adjust: none;
-    background-color: #291608;
+    background-color: #540094b6;
       padding: 1% 20%;
     text-align: center;
     text-wrap: nowrap;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 5vw;
-    color: rgb(248 248 248);
+    color: hsl(274, 100%, 91%), 100%, 96%);
     border-radius: 5%;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
@@ -47,7 +47,7 @@ body {
   .header {
     text-size-adjust: none;
     transition-duration: 0.4s;
-    background-color: #291608;
+    background-color: #540094b6;
       padding: 1% 20%;
     text-align: center;
     text-wrap: nowrap;
@@ -58,7 +58,7 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
   .header:hover {
-    background-color: #7f6655;
+    background-color: #9000ff;
     cursor: pointer;
   }
   
@@ -66,7 +66,7 @@ body {
   .button {
     text-size-adjust: none;
     transition-duration: 0.4s;
-    background-color: #291608;
+    background-color: #540094b6;
     border: none;
     border-radius: 10%;
     color: rgb(248 248 248);
@@ -83,13 +83,13 @@ body {
     margin-block: 1%;
   }
   .button:hover {
-    background-color: #7f6655;
+    background-color: #9000ff;
     cursor: pointer;
   }
   .bigbutton {
     text-size-adjust: none;
     transition-duration: 0.4s;
-    background-color: #291608;
+    background-color: #540094b6;
     border: none;
     border-radius: 10%;
     color: rgb(248 248 248);
@@ -107,7 +107,7 @@ body {
     margin-block: 1%;
   }
   .bigbutton:hover {
-    background-color: #7f6655;
+    background-color: #9000ff;
     cursor: pointer;
   }
   
@@ -115,7 +115,7 @@ body {
   /* small button, currently next/prev buttons musichall */
   .buttonS {
     transition-duration: 0.4s;
-    background-color: #291608;
+    background-color: #540094b6;
     border: none;
     border-radius: 10%;
     color: rgb(248 248 248);
@@ -133,7 +133,7 @@ body {
   }
   
   .buttonS:hover {
-    background-color: #7f6655;
+    background-color: #9000ff;
     cursor: pointer;
   }
   
@@ -168,7 +168,7 @@ body {
   
   /* for song title musichall */
   .title {
-    background-color: #291608;
+    background-color: #540094b6;
     border: none;
     border-radius: 15%;
     color: rgb(248 248 248);
@@ -194,19 +194,19 @@ body {
     -webkit-filter: drop-shadow(5px 5px 5px #222222);
     filter: drop-shadow(5px 5px 5px #222222);
     margin: 3% auto;
-    background-color: #291608;
+    background-color: #540094b6;
     border: none;
     border-radius: 25%;
     padding: 10%;
   }
   .playpause:hover {
-    background-color: #7f6655;
+    background-color: #9000ff;
     cursor: pointer;
   }
   
   /* displays time through song musichall  */
   .durationText {
-    background-color: #291608;
+    background-color: #540094b6;
     border: none;
     border-radius: 15%;
     color: rgb(248 248 248);
@@ -231,12 +231,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #291608;
+    background-color: #540094b6;
     border-radius: 25%;
     padding: 3%;
   }
   .playpausebox:hover {
-    background-color: #7f6655;
+    background-color: #9000ff;
     cursor: pointer;
   }
   
