@@ -82,7 +82,7 @@
   function clickHeader(type) {
 
     var guy = document.getElementById(type);
-    if (guy.style.display !== "block") {
+    if (guy.style.display !== "none") {
       guy.style.display = "block";
     }
     else {
@@ -91,12 +91,12 @@
   }
   addEventListener("keydown", (event) => {
     if (event.key === "r") {
-      document.body.style.backgroundImage = 'url("assets/dirty.png")', 'url("assets/rat_mouse_PNG23553.png")';
+      document.body.style.backgroundImage = "assets/dirty.png";
     }
   });
 
   window.addEventListener("scroll", function () {
-    document.body.style.backgroundPosition = `${window.scrollY * 0.25}px 0`; 
+    document.body.style.backgroundPosition = `${window.scrollY * 0.25}px ${window.scrollY * -0.5}px`; 
   });
 
 </script>
