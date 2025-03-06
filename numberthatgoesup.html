@@ -34,6 +34,9 @@
           body: JSON.stringify({ content: count.toString() })
           });
         });
+      window.addEventListener("scroll", function () {
+        document.body.style.backgroundPosition = `${window.scrollY * 0.25}px 0`; 
+       });
       </script>
     
     </body>

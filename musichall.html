@@ -284,6 +284,9 @@ songPlayer.addEventListener("ended", () => {
   scrubBar.value = scrubBar.max;
 });
 
+window.addEventListener("scroll", function () {
+    document.body.style.backgroundPosition = `${window.scrollY * 0.25}px 0`; 
+  });
 </script>
 
 </html>

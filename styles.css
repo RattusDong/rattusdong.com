@@ -15,12 +15,12 @@ body {
   h1 {
     text-size-adjust: none;
     background-color: #540094b6;
-      padding: 1% 20%;
+    padding: 1% 20%;
     text-align: center;
     text-wrap: nowrap;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 5vw;
-    color: hsl(274, 100%, 91%), 100%, 96%);
+    color: #ebd1ff;
     border-radius: 5%;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
@@ -54,7 +54,7 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 4vw;
     font-style: oblique;
-    color: rgb(248 248 248);
+    color: #ebd1ff;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
   .header:hover {
@@ -92,7 +92,7 @@ body {
     background-color: #540094b6;
     border: none;
     border-radius: 10%;
-    color: rgb(248 248 248);
+    color: #ebd1ff;
     padding: 5% 5%;
     text-align: center;
     text-decoration: none;
@@ -118,7 +118,7 @@ body {
     background-color: #540094b6;
     border: none;
     border-radius: 10%;
-    color: rgb(248 248 248);
+    color: #ebd1ff;
     padding: 2% 2%;
     text-align: center;
     text-decoration: none;
@@ -171,7 +171,7 @@ body {
     background-color: #540094b6;
     border: none;
     border-radius: 15%;
-    color: rgb(248 248 248);
+    color: #ebd1ff;
     padding: 2% 2%;
     text-align: center;
     text-decoration: none;
@@ -209,7 +209,7 @@ body {
     background-color: #540094b6;
     border: none;
     border-radius: 15%;
-    color: rgb(248 248 248);
+    color: #ebd1ff;
     padding: 2% 2%;
     text-align: center;
     text-decoration: none;

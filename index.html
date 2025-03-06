@@ -82,7 +82,7 @@
   function clickHeader(type) {
 
     var guy = document.getElementById(type);
-    if (guy.style.display === "none") {
+    if (guy.style.display !== "block") {
       guy.style.display = "block";
     }
     else {
