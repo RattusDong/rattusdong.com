@@ -239,5 +239,16 @@ body {
     background-color: #9000ff;
     cursor: pointer;
   }
+
+  .ratscript {
+    font-family: 'RatScript', sans-serif;
+}
+    /* ratscript font */
+  @font-face {
+    font-family: 'RatScript';
+    src: url('/assets/RatScript.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
   
   
