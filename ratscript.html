@@ -6,7 +6,7 @@
   <link rel="icon"
     href="assets/profilePic.png">
 
-  <link rel="stylesheet" href="styles.css?v=kys34a56">
+  <link rel="stylesheet" href="styles.css?v=kys3456">
 </head>
 
 <body>
@@ -16,13 +16,14 @@
 
 
 <script>
-    const engChars = ['NG', 'B', 'D', 'G', 'N', 'M', 'V', 'Z', 'J', 'L', 'R', 'W', 'H', 'I', 'E', 'A', 'U', 'O'];
+    const engChars = ['NG', 'B', 'D', 'G', 'N', 'M', 'V', 'Z', 'J', 'L', 'R', 'W', 'H', 'I', 'E', 'A', 'U', 'O', "'", '/', '.', ',','"'];
     const ratChars =  ['󻔈', '󻔀', '󻔁', '󻔂', '󻔆', '󻔇', '󻔃', '󻔄', '󻔅', '󻔉', '󻔊', '󻔋', '󻔌', '󻔍', '󻔎', '󻔏', '󻔐', '󻔑', '󻔒', '󻔓', '󻔔', '󻔕', '󻔖'];
     
 
     function convertTextRat() {
         let input = document.getElementById("engText").value;
         for (let i = 0; i < engChars.length; i++) {
+            let pattern = engChars[i].replace(/[.*+?^=!:${}()|\[\]\/\\]/g, "\\$&");
             input = input.replaceAll(new RegExp(engChars[i], 'gi'), ratChars[i]);
         }
         document.getElementById("ratText").value = input;
