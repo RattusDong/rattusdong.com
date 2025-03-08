@@ -240,9 +240,9 @@ body {
     cursor: pointer;
   }
 
-  #ratText #engText {
+  #ratText, #engText {
     font-family: 'RatScript', sans-serif;
-}
+  }
     /* ratscript font */
   @font-face {
     font-family: 'RatScript';
@@ -259,6 +259,10 @@ body {
   border: 2px solid #50008d;  
   border-radius: 8px; 
   margin-bottom: 20px; 
+}
+
+.ratscript {
+  font-family: 'RatScript', sans-serif;
 }
   
   
