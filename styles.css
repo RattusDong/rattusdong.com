@@ -252,13 +252,13 @@ body {
 }
 
 .textbox {
-  width: 40%; 
-  height: 30%; 
+  width: 45%; 
+  height: 35%; 
   font-size: 2vw;
   padding: 1%; 
-  border: 2px solid #50008d;  
-  border-radius: 1%; 
-  margin-bottom: 20px; 
+  border: 0.3vw solid #9100ff;  
+  border-radius: 2%; 
+  resize: none;
 }
 
 .ratscript {
