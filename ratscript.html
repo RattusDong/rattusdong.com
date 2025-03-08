@@ -24,7 +24,7 @@
         let input = document.getElementById("engText").value;
         for (let i = 0; i < engChars.length; i++) {
             let pattern = engChars[i].replace(/[.*+?^=!:${}()|\[\]\/\\]/g, "\\$&");
-            input = input.replaceAll(new RegExp(engChars[i], 'gi'), ratChars[i]);
+            input = input.replaceAll(new RegExp(pattern, 'gi'), ratChars[i]);
         }
         document.getElementById("ratText").value = input;
     }
