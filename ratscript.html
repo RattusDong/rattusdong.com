@@ -25,7 +25,7 @@
         for (let i = 0; i < engChars.length; i++) {
             input = input.replaceAll(new RegExp(engChars[i], 'gi'), ratChars[i]);
         }
-        document.getElementById("outputText").innerText = input;
+        document.getElementById("outputText").value = input;
     }
 
     window.addEventListener("scroll", function () {
