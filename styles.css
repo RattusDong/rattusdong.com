@@ -250,5 +250,15 @@ body {
     font-weight: normal;
     font-style: normal;
 }
+
+.textbox {
+  width: 40%; 
+  height: 30%; 
+  font-size: 2vw;
+  padding: 3%; 
+  border: 2px solid #50008d;  
+  border-radius: 8px; 
+  margin-bottom: 20px; 
+}
   
   

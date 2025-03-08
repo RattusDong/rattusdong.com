@@ -6,13 +6,13 @@
   <link rel="icon"
     href="assets/profilePic.png">
 
-  <link rel="stylesheet" href="styles.css?v=amongusxsdcwe">
+  <link rel="stylesheet" href="styles.css?v=amonesxsdcwe">
 </head>
 
 <body>
     <h1>English to Custom Script Converter</h1>
-    <textarea id="inputText" placeholder="Type in English..." oninput="convertText()"></textarea>
-    <textarea class="ratscript" id="outputText" readonly></textarea>
+    <textarea id="engText" placeholder="English" oninput="convertTextRat()"></textarea>
+    <textarea class="ratscript" placeholder="RatScript" id="ratText" oninput="convertTextEng()"></textarea>
 </body>
 
 
@@ -21,12 +21,20 @@
     const ratChars =  ['󻔈', '󻔀', '󻔁', '󻔂', '󻔆', '󻔇', '󻔃', '󻔄', '󻔅', '󻔉', '󻔊', '󻔋', '󻔌', '󻔍', '󻔎', '󻔏', '󻔐', '󻔑'];
     
 
-    function convertText() {
-        let input = document.getElementById("inputText").value;
+    function convertTextRat() {
+        let input = document.getElementById("engText").value;
         for (let i = 0; i < engChars.length; i++) {
             input = input.replaceAll(new RegExp(engChars[i], 'gi'), ratChars[i]);
         }
-        document.getElementById("outputText").value = input;
+        document.getElementById("ratText").value = input;
+    }
+
+    function convertTextEng() {
+        let input = document.getElementById("ratText").value;
+        for (let i = 0; i < engChars.length; i++) {
+            input = input.replaceAll(new RegExp(ratChars[i], 'gi'), engChars[i]);
+        }
+        document.getElementById("engText").value = input;
     }
 
     window.addEventListener("scroll", function () {
