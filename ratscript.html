@@ -18,10 +18,11 @@
 
 <script>
     const engChars = ['NG', 'B', 'D', 'G', 'N', 'M', 'V', 'Z', 'J', 'L', 'R', 'W', 'H', 'I', 'E', 'A', 'U', 'O'];
-    const ratChars =  ['󻔈', '󻔀b', '󻔁', '󻔂', '󻔆', '󻔇', '󻔃', '󻔄', '󻔅', '󻔉', '󻔊', '󻔋', '󻔌', '󻔍', '󻔎', '󻔏', '󻔐', '󻔑'];
-
+    const ratChars =  ['󻔈', '󻔀', '󻔁', '󻔂', '󻔆', '󻔇', '󻔃', '󻔄', '󻔅', '󻔉', '󻔊', '󻔋', '󻔌', '󻔍', '󻔎', '󻔏', '󻔐', '󻔑'];
+    
 
     function convertText() {
+        let input = document.getElementById("inputText").value;
         for (let i = 0; i < engChars.length; i++) {
             input = input.replaceAll(new RegExp(engChars[i], 'gi'), ratChars[i]);
         }
