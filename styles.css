@@ -240,7 +240,7 @@ body {
     cursor: pointer;
   }
 
-  .ratscript {
+  #ratText #engText {
     font-family: 'RatScript', sans-serif;
 }
     /* ratscript font */
