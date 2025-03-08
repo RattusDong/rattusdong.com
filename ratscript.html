@@ -13,29 +13,28 @@
     <h1>English to Custom Script Converter</h1>
     <textarea id="inputText" placeholder="Type in English..."></textarea>
     <button onclick="convertText()">Convert</button>
-    <textarea id="outputText"></textarea>
+    <textarea class="" id="outputText"></textarea>
 </body>
 
 
 <script>
-    const mapping = {
-        'B': '𐌁', 'D': '𐌃', 'G': '𐌂',  
-        'NG': '𐌍', 'M': '𐌌', 'N': '𐌑',
-        'V': '𐌅', 'S': '𐌔', 'J': '𐌖',
-        'L': '𐌋', 'R': '𐌓',
-        'H': '𐌇', 'W': '𐍂',
-        'A': '𐌀', 'E': '𐌁', 'I': '𐌉', 'O': '𐌏', 'U': '𐌖'
-    };
+    const engChars = ['NG', 'B', 'D', 'G', 'N', 'M', 'V', 'Z', 'J', 'L', 'R', 'W', 'H', 'I', 'E', 'A', 'U', 'O'];
+    const ratChars =  ['󻔈', '󻔀', '󻔁', '󻔂', '󻔆', '󻔇', '󻔃', '󻔄', '󻔅', '󻔉', '󻔊', '󻔋', '󻔌', '󻔍', '󻔎', '󻔏', '󻔐', '󻔑'];
+
 
     function convertText() {
-        let input = document.getElementById("inputText").value;
-        let output = input.split('').map(char => mapping[char.toUpperCase()] || char).join('');
-        document.getElementById("outputText").innerText = output;
+        for (let i = 0; i < engChars.length; i++) {
+            input = input.replaceAll(new RegExp(engChars[i], 'gi'), ratChars[i]);
+        }
+        document.getElementById("outputText").innerText = input;
     }
 
-  window.addEventListener("scroll", function () {
-    document.body.style.backgroundPosition = `${window.scrollY * 0.2}px ${window.scrollY * 0.2}px`; 
-  });
+    window.addEventListener("scroll", function () {
+        document.body.style.backgroundPosition = `${window.scrollY * 0.2}px ${window.scrollY * 0.2}px`; 
+    });
+
+  document.getElementById("inputText").addEventListener("input", convertText);
+
 
 </script>
 
