@@ -16,14 +16,14 @@
 
 
 <script>
-    const engChars = ['NG', 'B', 'D', 'G', 'N', 'M', 'V', 'Z', 'J', 'L', 'R', 'W', 'H', 'I', 'E', 'A', 'U', 'O', "'", "’", '/', '.', ',','"'];
-    const ratChars =  ['󻔈', '󻔀', '󻔁', '󻔂', '󻔆', '󻔇', '󻔃', '󻔄', '󻔅', '󻔉', '󻔊', '󻔋', '󻔌', '󻔍', '󻔎', '󻔏', '󻔐', '󻔑', '󻔒', '󻔒', '󻔓', '󻔔', '󻔕', '󻔖'];
+    const engChars = ['NG', 'B', 'D', 'G', 'N', 'M', 'V', 'Z', 'J', 'L', 'R', 'W', 'H', 'I', 'E', 'A', 'U', 'O', "'", "’", "‘", '/', '.', ',', '"', "“", "”"];
+    const ratChars =  ['󻔈', '󻔀', '󻔁', '󻔂', '󻔆', '󻔇', '󻔃', '󻔄', '󻔅', '󻔉', '󻔊', '󻔋', '󻔌', '󻔍', '󻔎', '󻔏', '󻔐', '󻔑', '󻔒', '󻔒', '󻔒', '󻔓', '󻔔', '󻔕', '󻔖', '󻔖', '󻔖'];
     
 
     function convertTextRat() {
         let input = document.getElementById("engText").value;
         for (let i = 0; i < engChars.length; i++) {
-            let pattern = engChars[i].replace(/[.*+?^=!:${}()|\[\]\/\\]/g, "\\$&");
+            let pattern = engChars[i].replace(/[.*+?^=!:${}()|\[\]\/\\‘’“”]/g, "\\$&");
             input = input.replaceAll(new RegExp(pattern, 'gi'), ratChars[i]);
         }
         document.getElementById("ratText").value = input;
