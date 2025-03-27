@@ -7,18 +7,32 @@
     <link rel="icon" href="assets/profilePic.png">
   
     <link rel="stylesheet" href="styles.css?v=200">
+    <style>
+      .clicky {
+      font-size: 5vw;       
+      font-weight: bold;            
+      padding: 40px;           
+      border: 5px solid white;          
+      border-radius: 20px;          
+      text-align: center;                      
+      background-color: rgba(255, 255, 255, 0.1);       
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);    
+      transition: transform 0.1s ease-in-out;
+      }
+      .clicky:active {
+        transform: scale(1.1);
+      }
+    </style>
   </head>
 
   
   <body>
     
-      <h1> Click number to up !  :)  </h1>
-      <p> </p>
-      <button class="clicky">0</button>
+      <h1> The number, it goes up. </h1>
+      <div class="clicky">0</div>
     
       <script>
         let count = 0;
-        const webhook = "https://discord.com/api/webhooks/1250798718572036116/KnFA0o0L7mMUiiznSbpBV7FPz3f0l9kVq4ItxAN3PhLeN1gVsTnxY_e1wJ6z8_AFySm4";
     
         document.querySelector(".clicky").addEventListener("click", async function() {
           count++;
@@ -39,8 +53,9 @@
       window.addEventListener("scroll", function () {
         document.body.style.backgroundPosition = `${window.scrollY * 0.25}px 0`; 
        });
+
       </script>
     
-    </body>
+  </body>
     
-    </html>
+</html>
