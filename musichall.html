@@ -15,43 +15,43 @@
         <th>Audio</th>
       </tr>
     </thead>
-    <tbody>
-      <!-- rows will be inserted here -->
-    </tbody>
+    <tbody></tbody>
   </table>
-  <p onclick="toggleExtras()"> test</p>
+
+  <p onclick="toggleExtras()" style="text-align:center; cursor:pointer;">toggle extras</p>
 </body>
 
 <script>
-let showExtras = false;
+  let showExtras = false; // use let so we can toggle it
 
-const songs = [
-  { name: "Song One", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false },
-  { name: "Song Two", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: true },
-  { name: "Song Three", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false }
-];
+  const songs = [
+    { name: "Song One",   src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false },
+    { name: "Song Two",   src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: true  },
+    { name: "Song Three", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false }
+  ];
 
-const tbody = document.querySelector("#musicTable tbody");
+  const tbody = document.querySelector("#musicTable tbody");
 
-songs.forEach(song => {
-  if (song.extra && !showExtras) return;
-
-  const row = document.createElement("tr");
-  row.innerHTML = `
-    <td>${song.name}</td>
-    <td><audio src="${song.src}" controls></audio></td>
-  `;
-  tbody.appendChild(row);
-});
-
-function toggleExtras() {
-  if (showExtras) {
-    showExtras = true
-  } else {
-    showExtras = false
+  function renderTable() {
+    tbody.innerHTML = ""; // clear existing rows
+    songs.forEach(song => {
+      if (song.extra && !showExtras) return; // hide extras unless toggled on
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${song.name}</td>
+        <td><audio src="${song.src}" controls></audio></td>
+      `;
+      tbody.appendChild(row);
+    });
   }
-}
 
+  function toggleExtras() {
+    showExtras = !showExtras; // flip the flag
+    renderTable();            // re-render rows
+  }
+
+  // initial render
+  renderTable();
 </script>
 
 </html>
