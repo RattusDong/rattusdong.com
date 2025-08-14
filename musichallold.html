@@ -1,0 +1,304 @@
+<html>
+
+<head>
+  <title>RattusDong Hub</title>
+
+  <link rel="icon" href="assets/profilePic.png">
+
+  <link rel="stylesheet" href="styles.css?v=557745s">
+</head>
+<body>
+  
+  
+    
+  <div class="centre">
+    <!-- prev song -->
+    <p id="left" onclick="indexer(-1)" class="buttonS"> &lt </p>
+    <!-- song title -->
+    <p id="title" class="title"> you just lost the game </p>
+    <!-- next song -->
+    <p id="right" onclick="indexer(1)" class="buttonS"> &gt </p>
+  </div>
+
+  <!-- playbutton -->
+   <div class="centre"> 
+    <div class="playpausebox" id="playpause">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="100%" class="size-6" class="playpause" onclick="togglePlay()" id="pause">
+        <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clip-rule="evenodd" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="100%" class="size-6" style="display: none;" class="playpause" onclick="togglePlay()" id="play">
+        <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+      </svg>
+     </div>
+   </div>
+
+  <div class="centre">
+    <!-- duration as text -->
+    <p id="durationText" class="durationText"> </p>
+    <!-- scrub bar very cool -->
+    <input type="range" id="scrubBar" min="0" value="0" step="0.1" style="width: 75%;">
+  </div>
+  
+
+  <!-- audio play that actually does the stuff, always hidden -->
+  <audio controls id="player" src="" style="display:none;" alt="Audio not found :("> width</audio>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <img id="rat" src="assets/mysteryRat.png" alt="hot rat" style="width:9.999999%;" onclick="ratClick()">
+
+</body>
+
+<script> 
+document.addEventListener("DOMContentLoaded", onPageLoad);
+
+//tracks current song
+let index = 0;
+let ratcount = 0;
+let funkyMode = false;
+
+//array for song files
+const song = [
+"assets/music/The Kingdom of Rattus.mp3",
+"assets/music/Rattus Church Good.mp3",
+"assets/music/A Wild Rodent Appears.mp3",
+"assets/music/Island Of The Green Lake.mp3",
+"assets/music/Route To Scrat Village.mp3",
+"assets/music/Scrat Village.mp3",
+"assets/music/Rat Void Empty.mp3",
+"assets/music/Here Be Pirats.mp3",
+"assets/music/The Critter.mp3",
+"assets/music/New Shrew City.mp3",
+"assets/music/Rattus Tower Defence.mp3",
+"assets/music/Shattered Porcelain Full.mp3",
+"assets/music/Serene Seaside.mp3",
+"assets/music/Norvegicus Nature Reserve.mp3",
+"assets/music/Fucking Ghost.mp3",
+"assets/music/PeaceBetweenRats.mp3",
+"assets/music/Turbo_Badass_Ultra_Cool_Rat.mp3",
+"assets/music/RAT Lab 0-RY.mp3"
+];
+//array for alt song files
+const songAlt = [
+"assets/music/The Kingdom of Rattus alt.mp3",
+"assets/music/Rattus Church Evil.mp3",
+"assets/music/The Wild Rodent Fainted.mp3",
+"assets/music/Island Of The Green Lake Music Box.mp3",
+"assets/music/Route To Scrat Village 8bit.mp3",
+"assets/music/Scrat Village Winter.mp3",
+"assets/music/Rat Void Cry.mp3",
+"assets/music/Here Were Pirats.mp3",
+"assets/music/The Critter Epic Remix.mp3",
+"assets/music/New Shrew Cafe.mp3",
+"assets/music/Rattus Tower Defence.mp3",
+"assets/music/Shattered Porcelain Full.mp3",
+"assets/music/Serene Seaside OG.ogg",
+"assets/music/Norvegicus Nature Reserve.mp3",
+"assets/music/Fucking Ghost Midi.mp3",
+"assets/music/PeaceBetweenRats.mp3",
+"assets/music/Turbo_Badass_Ultra_Cool_Rat.mp3",
+"assets/music/RAT Lab 0-RY.mp3"
+];
+
+//array for song titles
+const songnames = [
+"(1) The Kingdom of Rattus", 
+"(2) The Holy Church of Rattus",
+"(3) A Wild Rodent Appears!",
+"(4) Island On The Green Lake",
+"(5) Route To Scrat Village",
+"(6) The Wistful Scrat Village",
+"(7) The Void Beyond Rattus",
+"(8) Here Be Pirats",
+"(9) The Critter",
+"(10) New Shrew City",
+"(11) Rattus Tower Defence Theme",
+"(12) Shattered Porcelain (Skibidi Fortnite)",
+"(13) Serene Seaside",
+"(14) Norvegicus Nature Reserve",
+"(15) Ghost World",
+"(16) Peace Between Rats",
+"(17) Turbo Badass Ultra Cool Rat",
+"(18) RAt LAb 0-RY"
+];
+
+//⓪ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨
+//array for alt song titles
+const songnamesAlt = [
+"[①]  una cappella del regno di RATTUS     ",
+"[②]  the true church of RATTUS     ",
+"[③]  the wild rodent fainted     ",
+"[④]  arcadian island amidst green waters    ",
+"[⑤]  the quadrangular road to SCRAT village    ",
+"[⑥]  the frigid SCRAT village    ",
+"[⑦]  silent cry beyond    ",
+"[⑧]  here were pirats    ",
+"[⑨]  the critter [epic remix]    ",
+"[①⓪]  new shrew café    ",
+"(11) Rattus Tower Defence Theme",
+"(12) Shattered Porcelain (Skibidi Fortnite)",
+"[①③]  serene seaside @2023/04/14    ",
+"(14) Norvegicus Nature Reserve",
+"[①⑤]  ghostworld.mid    ",
+"(16) Peace Between Rats",
+"(17) Turbo Badass Ultra Cool Rat",
+"(18) RAT Lab 0-RY"
+];
+
+//tracks current song full length
+let totalMinutes = 0;
+let totalSeconds = 0;
+
+//elements
+const leftButton = document.getElementById("left");
+const rightButton = document.getElementById("right");
+const songPlayer = document.getElementById("player");
+const songTitle = document.getElementById("title");
+const playpause = document.getElementById("playpause");
+const durationText = document.getElementById("durationText");
+const scrubBar = document.getElementById("scrubBar");
+const rat = document.getElementById("rat");
+const play = document.getElementById("play");
+const pause = document.getElementById("pause");
+
+//load page and load song id if in link and funky mode
+function onPageLoad() {
+  const linkID = getQueryParam("ID");
+  if (linkID !== null && !isNaN(linkID) && linkID >= 0 && linkID < song.length) {
+    index = parseInt(linkID);
+  }
+  const funky = getQueryParam("alt");
+  if (funky !== null) {
+    funkyMode = true;
+    funkyTime();
+  }
+  change();
+}
+
+//get parameter in link
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+//change song index
+function indexer(num) {
+  index += num;
+  if (index > song.length - 1) {
+    index = 0;
+  }
+  else if (index < 0) {
+    index = song.length - 1;
+  }
+  change();
+}
+
+//change current song to index
+function change() {
+
+  if (funkyMode) {
+  songTitle.textContent = songnamesAlt[index];
+  songPlayer.src = songAlt[index];
+  }
+  else {
+    songTitle.textContent = songnames[index];
+    songPlayer.src = song[index];
+  }
+  document.getElementById("play").style.display = "block";
+  document.getElementById("pause").style.display = "none";
+}
+
+//play/pause on click play button
+function togglePlay() {
+ if (songPlayer.paused || songPlayer.ended) {
+   if (songPlayer.ended) {
+     songPlayer.currentTime = 0;
+    }
+    songPlayer.play();
+    document.getElementById("play").style.display = "none";
+    document.getElementById("pause").style.display = "block";
+  } else {
+    songPlayer.pause();
+    document.getElementById("play").style.display = "block";
+    document.getElementById("pause").style.display = "none";
+  }
+}
+
+//when u click the rat
+function ratClick() {
+  ratcount++;
+  rat.style.filter = `hue-rotate(${ratcount * 18}deg)`;
+  if (ratcount == 10) {
+    funkyTime();
+
+    change();
+  }
+}
+
+//when the when
+function funkyTime() {
+  ratcount = 10;
+  rat.style.filter = `hue-rotate(${ratcount * 18}deg)`;
+  funkyMode = true;
+  rat.onclick = null;
+
+  document.body.style.backgroundImage = "url('assets/background2.png')";
+
+leftButton.style.backgroundColor = '#62b41e65';
+rightButton.style.backgroundColor = '#62b41e65';
+songTitle.style.backgroundColor = '#62b41e65';
+playpause.style.backgroundColor = '#62b41e65';
+durationText.style.backgroundColor = '#62b41e65';
+
+leftButton.style.fontFamily = '"Courier New", monospace';
+rightButton.style.fontFamily = '"Courier New", monospace';
+songTitle.style.fontFamily = '"Courier New", monospace';
+playpause.style.fontFamily = '"Courier New", monospace';
+durationText.style.fontFamily = '"Courier New", monospace';
+play.style.fill = "none";
+play.style.stroke = '#192e0794';
+play.style.strokeWidth = "3%";
+pause.style.fill = "none";
+pause.style.stroke = '#192e0794';
+pause.style.strokeWidth = "3%";
+}
+
+//update text song duration and scrub
+songPlayer.addEventListener("timeupdate", () => {
+  const currentTime = songPlayer.currentTime;
+  const currentMinutes = Math.floor(currentTime / 60);
+  const currentSeconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
+  durationText.textContent = `${currentMinutes}:${currentSeconds} / ${totalMinutes}:${totalSeconds}`;
+  scrubBar.value = currentTime;
+});
+
+//when audio is loaded, set total time variables and reset duration
+songPlayer.addEventListener("loadedmetadata", () => {
+  const totalDuration = songPlayer.duration;
+  totalMinutes = Math.floor(totalDuration / 60);
+  totalSeconds = Math.floor(totalDuration % 60).toString().padStart(2, '0');
+  durationText.textContent = `0:00 / ${totalMinutes}:${totalSeconds}`;
+  scrubBar.max = totalDuration;
+});
+
+scrubBar.addEventListener("input", () => {
+  songPlayer.currentTime = scrubBar.value;
+});
+
+//when song ends
+songPlayer.addEventListener("ended", () => {
+  document.getElementById("play").style.display = "block";
+  document.getElementById("pause").style.display = "none";
+  scrubBar.value = scrubBar.max;
+});
+
+window.addEventListener("scroll", function () {
+  document.body.style.backgroundPosition = `${window.scrollY * 0.2}px ${window.scrollY * 0.2}px`; 
+  });
+</script>
+
+</html>
