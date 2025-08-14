@@ -5,10 +5,7 @@ body {
     background-size: 256px;
   }
   
-  #accounts, #enemies, #partners, #funnies {
-    display: none;
-  }
-  #featured {
+  #featured #accounts, #enemies, #partners, #funnies {
     display: block;
   }
   
@@ -49,14 +46,10 @@ body {
     text-align: center;
     text-wrap: nowrap;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 4vw;
+    font-size: 2.222vw;
     font-style: oblique;
     color: #ebd1ff;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  }
-  .header:hover {
-    background-color: #9000ff;
-    cursor: pointer;
   }
   
   /* buttons for links on index */
