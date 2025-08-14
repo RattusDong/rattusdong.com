@@ -15,13 +15,11 @@ body {
   h1 {
     text-size-adjust: none;
     background-color: #540094b6;
-    padding: 1% 20%;
     text-align: center;
     text-wrap: nowrap;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 5vw;
+    font-size: 4vw;
     color: #ebd1ff;
-    border-radius: 5%;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
   
@@ -47,7 +45,7 @@ body {
     text-size-adjust: none;
     transition-duration: 0.4s;
     background-color: #540094b6;
-      padding: 1% 20%;
+
     text-align: center;
     text-wrap: nowrap;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -69,15 +67,17 @@ body {
     border: none;
     border-radius: 10%;
     color: rgb(248 248 248);
-    padding: 5% 5%;
+    padding: 1% 1%;
+    display: flex;
+    align-items: center;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 2vw;
+    font-size: 1.2vw;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     border-spacing: 3%;
     box-shadow:5px 7px 10px 3px rgba(0,0,0,0.3);
-    width: 14%;
+    width: 12%;
     transform-origin: top left;
     margin-block: 1%;
   }
@@ -92,7 +92,7 @@ body {
     border: none;
     border-radius: 10%;
     color: #ebd1ff;
-    padding: 5% 5%;
+    padding: 0.5% 2%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -100,7 +100,7 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     border-spacing: 3%;
     box-shadow:5px 7px 10px 3px rgba(0,0,0,0.3);
-    width: 25%;
+    width: 17%;
     aspect-ratio: 1 / 1;
     transform-origin: top left;
     margin-block: 1%;
