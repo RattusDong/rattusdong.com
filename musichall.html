@@ -5,10 +5,10 @@
 
   <link rel="icon" href="assets/profilePic.png">
 
-  <link rel="stylesheet" href="styles.css?v=557745s">
+  <link rel="stylesheet" href="styles.css?v=557d745s">
 </head>
 <body>
-  <table id="musicTable" border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
+  <table id="musicTable" border="1" style="width: 60%; margin: auto; border-collapse: collapse; text-align: center;">
     <thead>
       <tr>
         <th>Name</th>
@@ -19,34 +19,36 @@
       <!-- rows will be inserted here -->
     </tbody>
   </table>
-
+  <p onclick="toggleExtras()"> test</p>
 </body>
 
-<script> 
+<script>
+const showExtras = false;
+
 const songs = [
-  { name: "Song One", src: "assets/music/The Kingdom of Rattus.mp3" },
-  { name: "Song Two", src: "assets/music/The Kingdom of Rattus.mp3" },
-  { name: "Song Three", src: "assets/music/The Kingdom of Rattus.mp3" }
+  { name: "Song One", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false },
+  { name: "Song Two", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: true },
+  { name: "Song Three", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false }
 ];
 
 const tbody = document.querySelector("#musicTable tbody");
 
-songs.forEach((song, index) => {
+songs.forEach(song => {
+  if (song.extra && !showExtras) return;
+
   const row = document.createElement("tr");
-
-  const nameCell = document.createElement("td");
-  nameCell.textContent = song.name;
-  row.appendChild(nameCell);
-
-  const audioCell = document.createElement("td");
-  const audio = document.createElement("audio");
-  audio.controls = true;
-  audio.src = song.src;
-  audioCell.appendChild(audio);
-  row.appendChild(audioCell);
-
+  row.innerHTML = `
+    <td>${song.name}</td>
+    <td><audio src="${song.src}" controls></audio></td>
+  `;
   tbody.appendChild(row);
 });
+
+toggleExtras() (
+  showExtras = true
+)
+</script>
+
 </script>
 
 </html>
