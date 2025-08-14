@@ -23,7 +23,7 @@
 </body>
 
 <script>
-const showExtras = false;
+let showExtras = false;
 
 const songs = [
   { name: "Song One", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false },
@@ -44,9 +44,13 @@ songs.forEach(song => {
   tbody.appendChild(row);
 });
 
-toggleExtras() (
-  showExtras = true
-)
+function toggleExtras() {
+  if (showExtras) {
+    showExtras = true
+  } else {
+    showExtras = false
+  }
+}
 </script>
 
 </script>
