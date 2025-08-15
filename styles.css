@@ -290,3 +290,9 @@ tr:nth-child(even) {
 audio {
   filter: drop-shadow(3px 3px 5px #222);
 }
+
+#rattoggle:hover {
+  cursor: pointer;
+  width: 12%;
+  opacity: 1;
+}
