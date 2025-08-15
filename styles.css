@@ -273,9 +273,10 @@ table {
   margin-left: 15%
 }
 
-td {
-  height: 15%;
-  padding: 1rem;
+td, th {
+  height: 5em;      
+  padding: 0.5em;         
+  vertical-align: middle;    
 }
 
 th {
@@ -283,7 +284,6 @@ th {
   background-color: #9000ff;
   font-weight: bold;
   text-transform: uppercase;
-  padding: 1rem;
 }
 
 tr:nth-child(even) {
@@ -292,6 +292,7 @@ tr:nth-child(even) {
 
 audio {
   filter: drop-shadow(3px 3px 5px #222);
+  width: 100%;
 }
 
 #rattoggle {
@@ -308,3 +309,7 @@ audio {
   width: 12%;
   opacity: 1;
 }
+
+th:nth-child(1), td:nth-child(1) { width: 30%; }
+th:nth-child(2), td:nth-child(2) { width: 25%; }
+th:nth-child(3), td:nth-child(3) { width: 45%; }
