@@ -8,11 +8,22 @@
   <link rel="stylesheet" href="styles.css?v=557d745s">
 </head>
 <body>
-  <table id="musicTable" border="1" style="width: 60%; margin: auto; border-collapse: collapse; text-align: center;">
+  <table id="featuredTable" border="1" style="width: 60%; margin: auto; border-collapse: collapse; text-align: center;">
     <thead>
       <tr>
         <th>Name</th>
         <th>Audio</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <table id="group0Table" border="1" style="width: 60%; margin: auto; border-collapse: collapse; text-align: center;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Audio</th>
+        <th>Notes</th>
       </tr>
     </thead>
     <tbody></tbody>
@@ -24,35 +35,56 @@
 </body>
 
 <script>
-  let showExtras = false; // use let so we can toggle it
+  let showExtras = false;
 
-  const songs = [
+  let songsfeatured = [
     { name: "Song One",   src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false },
     { name: "Song Two",   src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: true  },
     { name: "Song Three", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false }
   ];
 
-  const tbody = document.querySelector("#musicTable tbody");
+  let songsgroup0 = [
+    { name: "Song One",   src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: true },
+    { name: "Song Two",   src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false  },
+    { name: "Song Three", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: true }
+  ];
 
-  function renderTable() {
-    tbody.innerHTML = ""; // clear existing rows
+  let songsgroup1 = [
+    { name: "Song One",   src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false },
+    { name: "Song Two",   src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: true  },
+    { name: "Song Three", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false }
+  ];
+
+  let songsgroup2 = [
+    { name: "Song One",   src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false },
+    { name: "Song Two",   src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: true  },
+    { name: "Song Three", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false }
+  ];
+
+
+
+  function renderTable(songlist,tablename) {
+    let tbody = document.querySelector(tablename + " tbody");
+    tbody.innerHTML = ""; 
     songs.forEach(song => {
-      if (song.extra && !showExtras) return; // hide extras unless toggled on
-      const row = document.createElement("tr");
+      if (song.extra && !showExtras) return;
+      let row = document.createElement("tr");
       row.innerHTML = `
         <td>${song.name}</td>
         <td><audio src="${song.src}" controls></audio></td>
+        <td>${song.desc}</td>
       `;
       tbody.appendChild(row);
     });
   }
 
   function toggleExtras() {
-    showExtras = !showExtras; // flip the flag
-    renderTable();            // re-render rows
+    showExtras = !showExtras;
+    renderTable(songsfeatured, "#featuredTable");
+    renderTable(songsgroup0, "#group0Table"); 
   }
 
-  // initial render
+  
   renderTable();
 </script>
 
