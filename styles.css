@@ -283,7 +283,7 @@ th {
   height: 5%;
   background-color: #9000ff;
   font-weight: bold;
-  text-transform: uppercase;
+  font-size: 1.7vw;
 }
 
 tr:nth-child(even) {
@@ -313,3 +313,6 @@ audio {
 th:nth-child(1), td:nth-child(1) { width: 30%; }
 th:nth-child(2), td:nth-child(2) { width: 25%; }
 th:nth-child(3), td:nth-child(3) { width: 45%; }
+table td:nth-child(3) {
+  font-size: 0.95vw;
+}
