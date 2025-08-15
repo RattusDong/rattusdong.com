@@ -273,14 +273,18 @@ table {
   margin-left: 15%
 }
 
-th, td {
+td {
+  height: 15%;
   padding: 1rem;
 }
 
 th {
+  height: 5%;
   background-color: #9000ff;
   font-weight: bold;
   text-transform: uppercase;
+  text
+  padding: 1rem;
 }
 
 tr:nth-child(even) {
