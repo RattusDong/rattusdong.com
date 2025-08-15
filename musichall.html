@@ -66,7 +66,7 @@
   function renderTable(songlist,tablename) {
     let tbody = document.querySelector(tablename + " tbody");
     tbody.innerHTML = ""; 
-    songs.forEach(song => {
+    songlist.forEach(song => {
       if (song.extra && !showExtras) return;
       let row = document.createElement("tr");
       row.innerHTML = `
