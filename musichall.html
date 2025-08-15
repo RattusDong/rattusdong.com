@@ -89,8 +89,8 @@
     { name: "the critter epic remix", src: "assets/music/The Critter Epic Remix.mp3", desc: "Alt version of The Critter. Was getting bored of making alt versions of every track at this point.", extra: true },
     { name: "The Critter", src: "assets/music/The Critter.mp3", desc: "Created using only instruments i owned (Violin/Kalimba/Ocarina). The ocarina used is actually a sample of me playing mine that i turned into a soundfont.", extra: false },
     { name: "here were pirats", src: "assets/music/Here Were Pirats.mp3", desc: "Underwater version of Here Be Pirates.", extra: true },
-    { name: "Here Be Pirats", src: "assets/music/Here Be Pirats.mp3", desc: "", extra: false },
-    { name: "silent cry beyond", src: "assets/music/Rat Void Cry.mp3", desc: "", extra: false },
+    { name: "Here Be Pirats", src: "assets/music/Here Be Pirats.mp3", desc: "Fun little short song.", extra: false },
+    { name: "silent cry beyond", src: "assets/music/Rat Void Cry.mp3", desc: "Weird ambient.", extra: false },
     { name: "The Void Beyond Rattus", src: "assets/music/Rat Void Empty.mp3", desc: "silent cry beyond without the *Rat* leitmotif.", extra: true },
     { name: "the frigid SCRAT village", src: "assets/music/Scrat Village Winter.mp3", desc: "Winter version of Wistful Scrat Village.", extra: true },
     { name: "The Wistful Scrat Village", src: "assets/music/Scrat Village.mp3", desc: "I think this was inspired by Eterna City from Pokemon D/P.", extra: false },
@@ -141,6 +141,10 @@
   renderTable(songsgroup2, "#group2Table"); 
   renderTable(songsgroup1, "#group1Table");
   renderTable(songsgroup0, "#group0Table");
+
+  window.addEventListener("scroll", function () {
+    document.body.style.backgroundPosition = `${window.scrollY * 0.2}px ${window.scrollY * 0.2}px`; 
+  });
 </script>
 
 </html>
