@@ -66,16 +66,13 @@
   let showExtras = false;
 
   let songsfeatured = [
-    { name: "Song One", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false },
-    { name: "Song Two", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: true  },
-    { name: "Song Three", src: "assets/music/The Kingdom of Rattus.mp3", desc: "", extra: false }
+
   ];
 
-  let songsgroup0 = [
-    { name: "Serene Seaside [Old]", src: "assets/music/Serene Seaside OG.mp3", desc: "The final and only 'full length' FL track of Era 0 (of which i can remember and have archived).", extra: false },
-    { name: "Creeping Critter", src: "assets/music/incomp/Creeping_Critter.mp3", desc: "", extra: false  },
-    { name: "'West'", src: "assets/music/incomp/West.mp3", desc: "", extra: false  },
-    { name: "'absolute catostrophe'", src: "assets/music/incomp/absolute_catostrophe.mp3", desc: "Title sums it up perfectly, regardless, this is my earliest song i have archived (and the first to use FL), there are older, but those are on my old phone, maybe ill search for them soon.", extra: false }
+  let songsgroup2 = [
+    { name: "RAT Lab 0-RY", src: "assets/music/RAT Lab 0-RY.mp3", desc: "I learned you can make automation clips for anything lol.", extra: false  },
+    { name: "Turbo Badass Ultra Cool Rat", src: "assets/music/Turbo_Badass_Ultra_Cool_Rat.mp3", desc: "Truly one of the music of all time.", extra: false  },
+    { name: "Peace between rats", src: "assets/music/PeaceBetweenRats.mp3", desc: "First project of era 2 (Starting to use FLStudio from this point on).", extra: false  }
   ];
 
   let songsgroup1 = [
@@ -86,7 +83,10 @@
     { name: "Shattered Porcelain (Fortnite Skibidi)", src: "assets/music/Shattered Porcelain Full.mp3", desc: "A masterpeice constructed of skibidi toilet/fortnite the end leitmotif/fortnite default dance themes. Used in the hit shitpost game *Fortnite Skibidi 2024*.", extra: true },
     { name: "Rattus Tower Defence Theme", src: "assets/music/Rattus Tower Defence.mp3", desc: "Created for the conceptual game, the game GhostKill(Phasmanex) was chosen over my masterpeice as the college group game project. Song is a bit cluttered in places. (RattusTD when???)", extra: false },
     { name: "new shrew café", src: "assets/music/New Shrew Cafe.mp3", desc: "Alt version of New Shrew City. Instruments replaced, main melody muted.", extra: true },
-    { name: "New Shrew City", src: "assets/music/New Shrew City.mp3", desc: "A bit cluttered at parts and can clip the audio lol.", extra: false },
+    { name: "New Shrew City", src: "assets/music/New Shrew City.mp3", desc: "A bit cluttered at parts and can clip the audio lol. Inspired by Castelia City from Pokemon B/W", extra: false },
+    { name: "*New Shrew City [Old]*", src: "assets/music/incomp/shrew1.mp3", desc: "Old attempt at New Shrew City.", extra: true },
+    { name: "*Tungsten Mine #3*", src: "assets/music/incomp/tung mine 3.mp3", desc: "Attempt 3 at the tungsten mine theme.", extra: true },
+    { name: "*Tungsten Mine #2*", src: "assets/music/incomp/tungsten mine attemp 2.mp3", desc: "Attempt 2 at the tungsten mine theme. Idk what happened to attempt 1, prob just didnt save it.", extra: false },
     { name: "the critter epic remix", src: "assets/music/The Critter Epic Remix.mp3", desc: "Alt version of The Critter. Was getting bored of making alt versions of every track at this point.", extra: true },
     { name: "The Critter", src: "assets/music/The Critter.mp3", desc: "Created using only instruments i owned (Violin/Kalimba/Ocarina). The ocarina used is actually a sample of me playing mine that i turned into a soundfont.", extra: false },
     { name: "here were pirats", src: "assets/music/Here Were Pirats.mp3", desc: "Underwater version of Here Be Pirates.", extra: true },
@@ -97,6 +97,7 @@
     { name: "The Wistful Scrat Village", src: "assets/music/Scrat Village.mp3", desc: "I think this was inspired by Eterna City from Pokemon D/P.", extra: false },
     { name: "the quadrangular road to SCRAT village", src: "assets/music/Route To Scrat Village 8bit.mp3", desc: "Chiptune of Route to Scrat Village.", extra: false },
     { name: "Route to Scrat Village", src: "assets/music/Route To Scrat Village.mp3", desc: "Inspired by Pokemon B/W's route themes.", extra: false },
+    { name: "*Route to Scrat Village [Old]*", src: "assets/music/incomp/ratroute.mp3", desc: "Old attempt at Route to Scrat Village.", extra: true },
     { name: "Island of the Green Lake", src: "assets/music/Island Of The Green Lake.mp3", desc: "Name is an obscure reference only 1 other person will get.", extra: false },
     { name: "a wild rodent fainted", src: "assets/music/The Wild Rodent Fainted.mp3", desc: "Just editited to be funny creepypasta, doesnt really count as a song.", extra: true },
     { name: "A Wild Rodent Appears", src: "assets/music/A Wild Rodent Appears.mp3", desc: "Obviously inspired by pokemon battle themes. Percussion is all on the right stereo, which is a bit unpleasant.", extra: false },
@@ -104,12 +105,17 @@
     { name: "The Holy Church of Rattus", src: "assets/music/Rattus Church Good.mp3", desc: "Messing with chord tonality, all chords here forced to be major.", extra: false },
     { name: "the kingdom of RATTUS acapella", src: "assets/music/The Kingdom of Rattus alt.mp3", desc: "Abhorrent chaos.", extra: true  },
     { name: "The Kingdom of Rattus", src: "assets/music/The Kingdom of Rattus.mp3", desc: "The classic that rejuvinated my joy for composition. Origination of my main *Rat* leimotif, that can be heard in alot of these songs. (Note: all Era 1 tracks were produced using Musescore 4)", extra: false },
-    { name: "Space Invasion Trailer", src: "assets/music/incomp/si idk.mp3", desc: "Used for the trailer in my game dev project 'Space Invasion'.", extra: true  }
+    { name: "Space Invasion Trailer", src: "assets/music/si idk.mp3", desc: "Used for the trailer in my game dev project 'Space Invasion'.", extra: true  }
   ];
 
-  let songsgroup2 = [
-    
+  let songsgroup0 = [
+    { name: "Serene Seaside [Old]", src: "assets/music/Serene Seaside OG.mp3", desc: "The final and only 'full length' FL track of Era 0 (of which i can remember and have archived).", extra: false },
+    { name: "Creeping Critter", src: "assets/music/incomp/Creeping_Critter.mp3", desc: "The critter is creeping toward your location as you read this, it is unlikely to make it, but be prepared regardless.", extra: false  },
+    { name: "'West'", src: "assets/music/incomp/West.mp3", desc: "An outlier, made on 'https://signal.vercel.app/'", extra: false  },
+    { name: "'absolute catostrophe'", src: "assets/music/incomp/absolute_catostrophe.mp3", desc: "Title sums it up perfectly, regardless, this is my earliest song i have archived (and the first to use FL), there are older, but those are on my old phone, maybe ill search for them soon.", extra: false }
   ];
+
+  
 
 
 
