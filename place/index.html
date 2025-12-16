@@ -58,9 +58,9 @@
         window.onload = function() {
             // Get URL parameters using URLSearchParams
             const urlParams = new URLSearchParams(window.location.search);
-            const token = urlParams.get('token');
+            let token = urlParams.get('token');
             if (!token) {
-                localStorage.getItem("token");
+                token = localStorage.getItem("token");
             } else {
                 localStorage.setItem("token", token);
             }
