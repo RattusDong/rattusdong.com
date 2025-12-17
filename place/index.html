@@ -6,11 +6,8 @@
     <title>Token Checker</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
+            margin: 0;
+            overflow: hidden;
         }
         .container {
             margin-top: 50px;
@@ -38,22 +35,69 @@
             border-radius: 4px;
             word-break: break-all;
         }
+        canvas {
+            display: block;
+            background: #000;
+            image-rendering: pixelated;
+        }
     </style>
 </head>
 <body>
-    <div class="container" id="main-container">
-        <h1>Authentication Required</h1>
-        <p>Please click the button below to authenticate.</p>
-        <button id="auth-button">Authenticate</button>
-    </div>
-    
-    <div class="container" id="token-container" style="display: none;">
-        <h1>Authentication Successful</h1>
-        <p>Your token:</p>
-        <div id="token-display"></div>
-    </div>
+    <canvas id="canvas" width="900" height="300"></canvas>
 
     <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        let scale = 1;
+        let offsetX = 0, offsetY = 0;
+
+        const pixels = new Uint8ClampedArray(canvas.width * canvas.height).fill(0);
+
+        function draw() {
+            ctx.setTransform(scale, 0, 0, scale, offsetX, offsetY); // scale + translate
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw pixels
+            for (let y = 0; y < canvas.height; y++) {
+                for (let x = 0; x < canvas.width; x++) {
+                    const i = x + y * canvas.width;
+                    if (pixels[i]) {
+                        ctx.fillStyle = `rgb(${pixels[i]},0,0)`; // example red shade
+                        ctx.fillRect(x, y, 1, 1);
+                    }
+                }
+            }
+        }
+
+        canvas.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        const zoomFactor = 1.1;
+        if (e.deltaY < 0) scale *= zoomFactor;    // zoom in
+            else scale /= zoomFactor;                 // zoom out
+            draw();
+        });
+
+        let dragging = false;
+        let startX, startY;
+        canvas.addEventListener("mousedown", (e) => {
+            dragging = true;
+            startX = e.clientX - offsetX;
+            startY = e.clientY - offsetY;
+        });
+        canvas.addEventListener("mousemove", (e) => {
+            if (dragging) {
+                offsetX = e.clientX - startX;
+                offsetY = e.clientY - startY;
+                draw();
+            }
+        });
+        canvas.addEventListener("mouseup", () => dragging = false);
+        canvas.addEventListener("mouseleave", () => dragging = false);
+
+        // Initial draw
+        draw();
+
         const ws = new WebSocket("wss://islong.rattusdong.com");
 
         ws.onopen = () => {
