@@ -55,15 +55,21 @@
         const pixels = new Uint8ClampedArray(canvas.width * canvas.height).fill(0);
 
         function draw() {
-            ctx.setTransform(scale, 0, 0, scale, offsetX, offsetY); // scale + translate
+            // Clear canvas without scaling/translation
+            ctx.save();
+            ctx.setTransform(1, 0, 0, 1, 0, 0); // reset transform
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.restore();
+
+            // Apply zoom & pan
+            ctx.setTransform(scale, 0, 0, scale, offsetX, offsetY);
 
             // Draw pixels
             for (let y = 0; y < canvas.height; y++) {
                 for (let x = 0; x < canvas.width; x++) {
                     const i = x + y * canvas.width;
                     if (pixels[i]) {
-                        ctx.fillStyle = `rgb(${(i % 2) * 255},0,0)`; // example red shade
+                        ctx.fillStyle = `rgb(${((x + y) % 2) * 255},0,0)`; // checkerboard
                         ctx.fillRect(x, y, 1, 1);
                     }
                 }
