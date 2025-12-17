@@ -39,6 +39,8 @@
             display: block;
             background: #000;
             image-rendering: pixelated;
+            width: 100vw; 
+            height: 100vh;
         }
     </style>
 </head>
@@ -52,7 +54,16 @@
         let scale = 1;
         let offsetX = 0, offsetY = 0;
 
+        canvas.width = 900;
+        canvas.height = 300;
+
         const pixels = new Uint8ClampedArray(canvas.width * canvas.height).fill(0);
+
+        function resizeCanvas() {
+            canvas.style.width = window.innerWidth + "px";
+            canvas.style.height = window.innerHeight + "px";
+        }
+        window.addEventListener("resize", resizeCanvas);
 
         function draw() {
             // Clear canvas without scaling/translation
@@ -100,7 +111,8 @@
         canvas.addEventListener("mouseup", () => dragging = false);
         canvas.addEventListener("mouseleave", () => dragging = false);
 
-        // Initial draw
+        // Initial
+        resizeCanvas();
         draw();
 
         const ws = new WebSocket("wss://islong.rattusdong.com");
