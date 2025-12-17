@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Token Checker</title>
+    <title>Rattus Place</title>
     <style>
         body {
             margin: 0;
@@ -63,7 +63,7 @@
                 for (let x = 0; x < canvas.width; x++) {
                     const i = x + y * canvas.width;
                     if (pixels[i]) {
-                        ctx.fillStyle = `rgb(${pixels[i]},0,0)`; // example red shade
+                        ctx.fillStyle = `rgb(${(i % 2) * 255},0,0)`; // example red shade
                         ctx.fillRect(x, y, 1, 1);
                     }
                 }
