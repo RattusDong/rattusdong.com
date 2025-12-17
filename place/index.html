@@ -54,6 +54,24 @@
     </div>
 
     <script>
+        const ws = new WebSocket("wss://islong.rattusdong.com");
+
+        ws.onopen = () => {
+            console.log("connected!");
+         };
+
+         ws.onmessage = (event) => {
+            console.log("got message:", event.data);
+         };
+
+         ws.onclose = () => {
+            console.log("disconnected");
+        };
+
+         ws.onerror = (err) => {
+            console.error("ws error", err);
+         };
+        
         // Check for token parameter when page loads
         window.onload = function() {
             // Get URL parameters using URLSearchParams
@@ -73,13 +91,16 @@
                 
                 // Remove token from URL by replacing current history state
                 window.history.replaceState({}, document.title, window.location.pathname);
+
+                
+
+
             } else {
-                // If no token, setup auth button
-                document.getElementById('auth-button').addEventListener('click', function() {
-                    window.location.href = "https://rotur.dev/auth?return_to=https://rattusdong.com/place";
-                });
+                window.location.href = "https://rotur.dev/auth?return_to=https://rattusdong.com/place"
             }
         };
+
+        
     </script>
 </body>
 </html>
