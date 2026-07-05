@@ -496,14 +496,14 @@
       if (f > 0) this.push(h("rect", { x: x0, y: y0, width: ww * f, height: hh, fill: String(col), rx: hh / 2, ry: hh / 2 }));
     },
     rect(w, hgt, rounding) {
-      const ww = (+w || 0) * cam.scale, hh = (+hgt || 0) * cam.scale;
+      const ww = (+w || 0) + (+rounding || 0) * cam.scale, hh = (+hgt || 0) + (+rounding || 0) * cam.scale;
       const x = sx(this.curX) - ww / 2;
       const y = sy(this.curY) - hh / 2;
       const props = { x, y, width: ww, height: hh, fill: this.penColor };
       const r = +rounding || 0;
       if (r > 0) {
-        props.rx = r;
-        props.ry = r;
+        props.rx = r / 2;
+        props.ry = r / 2;
       }
       this.push(h("rect", props));
     },
