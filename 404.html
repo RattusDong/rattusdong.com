@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<!-- Header -->
+<head>
+    <title>Rattusdong 404</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="assets/images/avatar.png">
+</head>
+<!-- Body -->
+<body>  
+
+<div class="pageBody">
+    <div class="mainFrame">
+        <br>
+        <div class="itemRow">
+            <image src="assets/images/mystery.png" style="width: 20%">
+            <h2> 404 Page not found</h2>
+            <image src="assets/images/mystery.png" style="width: 20%">
+        </div>
+        <a href="main.html" style="width: 55%"> Go to Main Page </a>
+        <br>
+    </div>
+</div>
+
+<audio id="splatsfx">
+  <source src="assets/sounds/splat.wav" type="audio/wav">
+</audio>
+
+</body>
+<!-- Scripts -->
+<script>
+    window.addEventListener("scroll", function () {
+        document.body.style.backgroundPosition = `${window.scrollY * 0.2}px ${window.scrollY * 0.2}px`; 
+    });
+    /* evil avatar kill function */
+    function avatarSplat() {
+        let avatar = document.getElementById("avatar");
+        avatar.src = "assets/images/avatar_splat.png"
+        avatar.onclick = "";
+        avatar.style.cursor = "default";
+
+        let sfx = document.getElementById("splatsfx");
+        sfx.volume = 0.3;
+        sfx.play();
+
+        let scale = 98;
+        id = setInterval(frame, 10);
+        function frame() {
+            if (scale == 110) {
+                clearInterval(id);
+            } else {
+                scale++; 
+                avatar.style.scale = scale + '%'; 
+            }
+        }
+    }
+</script>
+</html>
