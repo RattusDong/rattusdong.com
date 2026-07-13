@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<!-- Header -->
+<head>
+    <title>Rattusdong Main</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="assets/images/avatar.png">
+</head>
+<!-- Body -->
+<body>  
+
+<div class="pageBody">
+    <div class="mainFrame">
+        <br>
+        <h1> Rattusdong Main Hub </h1>
+        <div class="divider"></div>
+        <!-- Music -->
+        <div class="itemRow">
+            <a href="music.html" style="width: 40%"> 
+                <image src="assets/images/music_guy.png" style="width: 85%">
+            </a>
+            <p style="width: 50%"> 
+                The page for all my original music. 
+                Though I only upload my newest tracks to my youtube now, 
+                you can find an archive of my music dating back to 2023 here.
+            </p>
+        </div>
+        <div class="divider"></div>
+        <!-- Arcade -->
+        <div class="itemRow">
+            <a href="arcade.html" style="width: 40%"> 
+                <image src="assets/images/arcade_guy.png" style="width: 85%">
+            </a>
+            <p style="width: 50%"> 
+                A collection of various games of mine.
+                Every game on here so far runs in the browser, 
+                no need to download anything.
+                (temporarily as none)
+            </p>
+        </div>
+        <div class="divider"></div>
+        <!-- Art -->
+        <div class="itemRow">
+            <a href="artgallery.html" style="width: 40%"> 
+                <image src="assets/images/art_guy.png" style="width: 85%">
+            </a>
+            <p style="width: 50%"> 
+                A gallery of only the finest arts,
+                truly, a sight to behold. 
+                Why don't you take a look?
+                (temporarily as old art page)
+            </p>
+        </div>
+        <div class="divider"></div>
+        <!-- Misc -->
+        <div class="itemRow">
+            <a href="indexold.html" style="width: 40%"> 
+                <image src="assets/images/mystery.png" style="width: 85%">
+            </a>
+            <p style="width: 50%"> 
+                And for everything else, I just chuck it on this page.
+                Don't expect such a page to be as refined as the others.
+                (temporarily as old index page)
+            </p>
+        </div>
+        <div class="divider"></div>
+        <!-- Today's Fortunes -->
+        <h1> Today's Fortune</h1>
+        <div class="item">
+            <div class="itemRow">
+                <!-- Lucky Numbers -->
+                <h2 style="text-align: center; width:45%"> Lucky Numbers </h2>
+                <div style="width:5%"><div class="dividerV"></div></div>
+                <h3 id="luckynum" style="text-align: center;width:45%">
+                    -
+                </h3>
+            </div>
+            <div class="divider"></div>
+            <div class="itemRow">
+                <!-- New Word -->
+                <h2 style="text-align: center; width:45%"> New Word </h2>
+                <div style="width:5%"><div class="dividerV"></div></div>
+                <h3 id="newword" style="text-align: center;width:45%">
+                    -
+                </h3>
+            </div>
+            <div class="divider"></div>
+            <div class="itemRow">
+                <!-- Today's Wisdom -->
+                <h2 style="text-align: center; width:45%"> Today's Wisdom </h2>
+                <div style="width:5%"><div class="dividerV"></div></div>
+                <p id="dailywisdom" style="text-align: center;width:45%">
+                    -
+                </p>
+            </div>
+            <br>
+        </div>
+        <!-- Server Stats -->
+        <h1> Server Stats </h1>
+        <div class="item">
+            <div class="itemRow">
+                <!-- Uptime -->
+                <h2 style="text-align: center; width:45%"> Uptime </h2>
+                <div style="width:5%"><div class="dividerV"></div></div>
+                <h3 id="uptime" style="text-align: center;width:45%">
+                    -
+                </h3>
+            </div>
+            <div class="divider"></div>
+            <div class="itemRow">
+                <!-- Best Uptime -->
+                <h2 style="text-align: center; width:45%"> Best Uptime </h2>
+                <div style="width:5%"><div class="dividerV"></div></div>
+                <h3 id="bestuptime" style="text-align: center;width:45%">
+                    -
+                </h3>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+
+</body>
+<!-- Scripts -->
+<script>
+    const api = "https://api.rattusdong.com";
+
+    window.addEventListener("scroll", function () {
+        document.body.style.backgroundPosition = `${window.scrollY * 0.2}px ${window.scrollY * 0.2}px`; 
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        let luckynum =      document.getElementById("luckynum")
+        let newword =       document.getElementById("newword")
+        let dailywisdom =   document.getElementById("dailywisdom")
+        let uptime =        document.getElementById("uptime")
+        let bestuptime =    document.getElementById("bestuptime")
+
+        fetch(api + "/luckynumbers")
+            .then(res => {if (res.status == 200) { return res.text(); }})
+            .then(text => luckynum.textContent = text);
+        fetch(api + "/newword")
+            .then(res => {if (res.status == 200) { return res.text(); }})
+            .then(text => newword.textContent = text);
+        fetch(api + "/dailywisdom")
+            .then(res => {if (res.status == 200) { return res.text(); }})
+            .then(text => dailywisdom.textContent = text);
+        fetch(api + "/uptime")
+            .then(res => {if (res.status == 200) { return res.text(); }})
+            .then(text => uptime.textContent = text);
+        fetch(api + "/bestuptime")
+            .then(res => {if (res.status == 200) { return res.text(); }})
+            .then(text => bestuptime.textContent = text);
+
+    });
+</script>
+</html>

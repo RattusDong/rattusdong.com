@@ -1,74 +1,86 @@
+<!DOCTYPE html>
 <html>
-
+<!-- Header -->
 <head>
-  <title>RattusDong Hub</title>
-
-  <link rel="icon"
-    href="assets/profilePic.png">
-
-  <link rel="stylesheet" href="styles.css?v=amongusxxx">
+    <title>Rattusdong About</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="assets/images/avatar.png">
 </head>
+<!-- Body -->
+<body>  
 
-<body>
-  <h1>Welcome to RattusDong Hub</h1>
-  <img src="assets/profilePic.png"
-    alt="handsome portrait" style="width:8%;">
-
-    <h3 onclick="clickHeader('featured')" class="header">Featured</h3>
-    <div id="featured">
-      <div class="centre">
-        <a href="artgallery" class="bigbutton"> <img src="assets/ratart.png" style="width:100%;">  </a>
-        <a href="musichall?ID=17" class="bigbutton"> <img src="assets/ratheadphones.png" style="width:100%;"> </a> 
-      </div>
+<div class="pageBody">
+    <div class="mainFrame">
+        <!-- Epic about me -->
+        <div class="item">
+            <div class="itemRow">
+                <h1 style="width:70%">Hi, I'm Rattus</h1>
+                <image id="avatar" onclick="avatarSplat()" src="assets/images/avatar.png" style="width: 20%; cursor: pointer">
+            </div>
+            <div class="divider"></div>
+            <p> I believe we are born to dream, and to share that dream. This website is a place for me to share mine. </p>
+            <p> My main hobbies are in Computing and Music. 
+                In computing, I enjoy programming and reverse engineering, 
+                and when it comes to choice of language I prefer C/C++ due to how it functions at a low-level. 
+            </p>
+            <p> These loves stem from my experiences in rom-hacking, most prominently Pikmin 2.
+                While I have yet to release a rom-hack of this game, it's still a dream I wish to show you one day. 
+            </p>
+            <p> As for music, I started learning to play the violin at a young age. 
+                Though I never really engaged deeply with it until around 2020, 
+                that was when I realized I could play scores from my favourite games, 
+                the first of these scores that caught my attention was "Hornet - Hollow Knight". 
+            </p>
+            <p> Music from games continue to be my main focus to this day, 
+                the way that they can tell stories, 
+                and the way you tie memories to these songs is pretty cool in my opinion. 
+                They have inspired me to compose my own music, akin to the many soundtracks I've heard over the years.
+                Each track I create, I try and tell a story, of a place, person, or moment in history.
+            </p>
+            <p> Aside from the violin, I have become fluent on both ocarina and my special 42 key kalimba. 
+                Sometime the future, I also wish to learn the piano. 
+            </p>
+            <p> 
+                Click the button bellow to navigate the various subpages dedicated to the facets of my dream. I hope you enjoy. 
+            </p>
+            <br>
+        </div>
+        <a href="main.html" style="width: 55%"> Go to Main Page </a>
+        <br>
     </div>
-
-  <h3 onclick="clickHeader('funnies')" class="header">Games</h3>
-  <div id="funnies">
-    <div class="centre">
-      <a href="spaceinvasion" class="button"> Space Invasion [Construct 3]</a>
-      <a href="fortniteskibidi2024" class="button"> Fortnite Skibidi 2024 [OSL]</a>
-      <a href="ratsimulater2013" class="button"> Rat Simulater 2013 [OSL]</a>
-    </div>
-  </div>
-
-<h3 onclick="clickHeader('accounts')" class="header">Socials and accounts</h3>
-
-<div id="accounts">
-  <div class="centre"> 
-    <a href="https://www.youtube.com/@randomcontentgenerator9404" class="button"> Youtube Random</a> 
-    <a href="https://www.youtube.com/@RattusD_Music" class="button"> Youtube Music</a> 
-    <a href="https://www.youtube.com/@rattusdongisbig8725" class="button"> Youtube Pikmin</a>
-    <a href="https://discord.gg/ujAzWVS5" class="button">Discord server (very active!)</a> 
-  </div>
-  <div class="centre">
-    
-  </div class="centre">
-
 </div>
 
+<audio id="splatsfx">
+  <source src="assets/sounds/splat.wav" type="audio/wav">
+</audio>
+
 </body>
-
+<!-- Scripts -->
 <script>
-  function clickHeader(type) {
+    window.addEventListener("scroll", function () {
+        document.body.style.backgroundPosition = `${window.scrollY * 0.2}px ${window.scrollY * 0.2}px`; 
+    });
+    /* evil avatar kill function */
+    function avatarSplat() {
+        let avatar = document.getElementById("avatar");
+        avatar.src = "assets/images/avatar_splat.png"
+        avatar.onclick = "";
+        avatar.style.cursor = "default";
 
-    var guy = document.getElementById(type);
-    if (guy.style.display !== "none") {
-      guy.style.display = "block";
-    }
-    else {
-      guy.style.display = "none";
-    }
-  }
-  addEventListener("keydown", (event) => {
-    if (event.key === "r") {
-      document.body.style.backgroundImage = "assets/dirty.png";
-    }
-  });
+        let sfx = document.getElementById("splatsfx");
+        sfx.volume = 0.3;
+        sfx.play();
 
-  window.addEventListener("scroll", function () {
-    document.body.style.backgroundPosition = `${window.scrollY * 0.2}px ${window.scrollY * 0.2}px`; 
-  });
-
+        let scale = 98;
+        id = setInterval(frame, 10);
+        function frame() {
+            if (scale == 110) {
+                clearInterval(id);
+            } else {
+                scale++; 
+                avatar.style.scale = scale + '%'; 
+            }
+        }
+    }
 </script>
-
 </html>

@@ -1,0 +1,74 @@
+<html>
+
+<head>
+  <title>RattusDong Hub</title>
+
+  <link rel="icon"
+    href="assets/profilePic.png">
+
+  <link rel="stylesheet" href="styles.css?v=amongusxxx">
+</head>
+
+<body>
+  <h1>Welcome to RattusDong Hub</h1>
+  <img src="assets/profilePic.png"
+    alt="handsome portrait" style="width:8%;">
+
+    <h3 onclick="clickHeader('featured')" class="header">Featured</h3>
+    <div id="featured">
+      <div class="centre">
+        <a href="artgallery" class="bigbutton"> <img src="assets/ratart.png" style="width:100%;">  </a>
+        <a href="musichall?ID=17" class="bigbutton"> <img src="assets/ratheadphones.png" style="width:100%;"> </a> 
+      </div>
+    </div>
+
+  <h3 onclick="clickHeader('funnies')" class="header">Games</h3>
+  <div id="funnies">
+    <div class="centre">
+      <a href="spaceinvasion" class="button"> Space Invasion [Construct 3]</a>
+      <a href="fortniteskibidi2024" class="button"> Fortnite Skibidi 2024 [OSL]</a>
+      <a href="ratsimulater2013" class="button"> Rat Simulater 2013 [OSL]</a>
+    </div>
+  </div>
+
+<h3 onclick="clickHeader('accounts')" class="header">Socials and accounts</h3>
+
+<div id="accounts">
+  <div class="centre"> 
+    <a href="https://www.youtube.com/@randomcontentgenerator9404" class="button"> Youtube Random</a> 
+    <a href="https://www.youtube.com/@RattusD_Music" class="button"> Youtube Music</a> 
+    <a href="https://www.youtube.com/@rattusdongisbig8725" class="button"> Youtube Pikmin</a>
+    <a href="https://discord.gg/ujAzWVS5" class="button">Discord server (very active!)</a> 
+  </div>
+  <div class="centre">
+    
+  </div class="centre">
+
+</div>
+
+</body>
+
+<script>
+  function clickHeader(type) {
+
+    var guy = document.getElementById(type);
+    if (guy.style.display !== "none") {
+      guy.style.display = "block";
+    }
+    else {
+      guy.style.display = "none";
+    }
+  }
+  addEventListener("keydown", (event) => {
+    if (event.key === "r") {
+      document.body.style.backgroundImage = "assets/dirty.png";
+    }
+  });
+
+  window.addEventListener("scroll", function () {
+    document.body.style.backgroundPosition = `${window.scrollY * 0.2}px ${window.scrollY * 0.2}px`; 
+  });
+
+</script>
+
+</html>
